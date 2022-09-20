@@ -1,0 +1,54 @@
+@import 'variables';
+
+.navbar {
+    background-color: $navbar-bg;
+    --bs-navbar-padding-x: 4rem;
+    --bs-navbar-padding-y: 0;
+}
+
+.navbar-search {
+    background-color: $search-bg;
+    min-height: 40px;
+}
+
+.navbar-item, 
+.navbar-item a {
+    font-family: 'love_and_sunshine';
+    font-size: 22px;
+    color: $white;
+    text-decoration: none;
+}
+
+.navbar-item:hover, 
+.navbar-item a:hover {
+    color: $secondary;
+    transition: ease 0.3s;
+}
+
+.logo-brand {
+    max-height: none !important;
+    width: 150px;
+}
+
+.search-input {
+    border-radius: 15px !important;
+}
+
+.btn-animal {
+    background-color: $white;
+    color: $primary;
+    border-radius: 25px;
+    margin-right: 1rem;
+    padding-inline: 1rem;
+    height: 30px;
+}
+
+.btn-animal img {
+    height: 25px;
+    margin-right: 6px;
+}
+
+.btn-animal:hover {
+    color: $secondary !important;
+    transition: ease 0.3s;
+}

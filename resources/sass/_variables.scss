@@ -1,4 +1,20 @@
+// Basic colors
+$primary: #960DAB;
+$secondary: #9FDE00;
+$white: #f8fafc;
+$black: #363636;
+$gray-dark: #868686;
+$gray-light: #d4d4d4;
+
+// Body
+$body-bg: $white;
+
 // * Typography
+$font-family-sans-serif: 'Ubuntu', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+// Google fonts
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 // Custom font
 @font-face {
     font-family: 'love_and_sunshine';
@@ -6,4 +22,27 @@
         url('../fonts/love__sunshine_-_ttf.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+}
+
+// Navbar
+$navbar-bg: $primary;
+$search-bg: $secondary;
+
+// * Overcharge Bulma classes
+.is-primary {
+    background-color: $primary !important;
+}
+// Not Bulma class but similar
+.is-secondary {
+    background-color: $secondary;
+}
+.title {
+    font-family: 'love_and_sunshine';
+}
+
+// * Own general classes
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
