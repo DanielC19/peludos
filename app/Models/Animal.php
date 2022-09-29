@@ -17,6 +17,7 @@ class Animal extends Model
      */
     protected $fillable = [
         'name',
+        'image'
     ];
 
     static public function products($animal_id)

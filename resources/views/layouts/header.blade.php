@@ -52,6 +52,12 @@
 </nav>
 <nav class="navbar navbar-search">
     <div class="navbar-start">
+        @foreach ($animals_header as $animal_header)
+        <a href="{{ route('animals', $animal_header->name) }}" class="navbar-item btn-animal">
+            <img src="{{ Vite::asset("resources/img/$animal_header->image") }}" alt="Logo {{ $animal_header->name }}">
+            {{ strtolower($animal_header->name) }}
+        </a>            
+        @endforeach
     </div>
     <div class="navbar-end">
         <div class="control has-icons-left has-icons-right">
