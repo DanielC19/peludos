@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,4 @@ Route::get('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('
 Route::get('/',                     [HomeController::class, 'index'])->name('home');
 Route::get('/home',                 [HomeController::class, 'index'])->name('home');
 Route::get('/animal/{animal}',      [AnimalController::class, 'index'])->name('animal');
+Route::get('/category/{category}',  [CategoryController::class, 'index'])->name('category');

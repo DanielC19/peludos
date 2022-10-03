@@ -7,7 +7,7 @@
 {{-- Categories --}}
 <section class="is-flex-wrap-wrap center">
     @foreach ($animal->categories as $category)
-        <a href="" class="button is-rounded m-2"><i class="fa-solid fa-bone mr-2"></i>{{ $category->name }}</a>
+        <a href="{{ route('category', $category->id) }}" class="button is-rounded m-2"><i class="fa-solid fa-bone mr-2"></i>{{ $category->name }}</a>
     @endforeach
 </section>
 
