@@ -9,10 +9,8 @@ class AnimalController extends Controller
 {
     public function index($animal_name)
     {
-        $animals = Animal::all()->where('name', $animal_name)->take(1);
-        foreach ($animals as $value) {
-            $animal = $value;
-        }
+        $animals = Animal::where('name', $animal_name)->get();
+        $animal = $animals[0];
         $products = Animal::products($animal->id);
         return view('animal', compact('products', 'animal'));
     }
