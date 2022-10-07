@@ -1,0 +1,33 @@
+@import 'variables';
+
+.cart-overlay {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    width: 60px;
+    height: 60px;
+    color: $white;
+    background-color: $primary;
+    bottom: 40px;
+    right: 50px;
+    border-radius: 50%;
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.6);
+}
+
+.cart {
+    position: relative;
+    margin-right: 2px;
+}
+
+.cart-number {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 10px;
+    top: -6px;
+    font-size: 11pt;
+    color: $primary;
+}

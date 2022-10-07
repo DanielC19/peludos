@@ -28,4 +28,24 @@ trait Product
         $this->presentation_selected = $presentation_id;
         $this->price = Presentation::find($presentation_id)->price;
     }
+
+    /**
+     * * Add product with selected presentation to cart
+     */
+    public function addCart()
+    {
+        // If there's nothing, create empty cart
+        if (session()->missing('cart')) {
+            session()->put('cart', []);
+        }
+
+        // Assign selected presentation to product}
+        $this->product->presentation = $this->presentation_selected;
+
+        // Agrega el producto al carrito
+        session()->push('cart', $this->product);
+
+        // Emit an event to increment cart counter
+        $this->emit('productAdded');
+    }
 }

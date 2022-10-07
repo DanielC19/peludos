@@ -29,6 +29,12 @@
     @yield('content')
 </main>
 
+@if (Session::has('cart'))
+    @if (count(Session::get('cart')) != 0)
+        @livewire('cart')    
+    @endif
+@endif
+
 @include('layouts.footer')
 
 {{-- Livewire JS scripts --}}
