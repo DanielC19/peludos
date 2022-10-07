@@ -17,6 +17,9 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    {{-- Livewire --}}
+    @livewireStyles
 </head>
 <body>
 
@@ -27,6 +30,9 @@
 </main>
 
 @include('layouts.footer')
+
+{{-- Livewire JS scripts --}}
+@livewireScripts
 
 </body>
 </html>
