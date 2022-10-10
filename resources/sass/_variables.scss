@@ -40,7 +40,12 @@ $search-bg: $secondary;
     font-family: 'love_and_sunshine';
 }
 
-// * Own general 
+// * Own general
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 a {
     text-decoration: none;
 }
