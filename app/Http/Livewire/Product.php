@@ -42,8 +42,17 @@ trait Product
         // Assign selected presentation to product}
         $this->product->presentation = $this->presentation_selected;
 
-        // Agrega el producto al carrito
-        session()->push('cart', $this->product);
+        // Check this product isn't already on cart
+        $add_product = true;
+        foreach (session()->get('cart') as $product) {
+            if ($this->product->id == $product->id) {
+                $add_product = false;
+            }
+        }
+        if ($add_product) {
+            // Add product to cart
+            session()->push('cart', $this->product);
+        }
 
         // Emit an event to increment cart counter
         $this->emit('productAdded');
