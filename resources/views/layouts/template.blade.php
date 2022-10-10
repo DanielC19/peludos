@@ -29,10 +29,9 @@
     @yield('content')
 </main>
 
-@if (Session::has('cart'))
-    @if (count(Session::get('cart')) != 0)
-        @livewire('cart')    
-    @endif
+{{-- Check cart is defined and it's not cart view --}}
+@if (!isset($cart_full_view))
+    @livewire('cart-fixed')    
 @endif
 
 @include('layouts.footer')

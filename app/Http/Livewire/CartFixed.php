@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class Cart extends Component
+class CartFixed extends Component
 {
     public $counter;
 
@@ -13,12 +13,9 @@ class Cart extends Component
 
     public function render()
     {
-        if (session()->has('cart')) {
-            $this->counter = count(session()->get('cart'));
-        } else {
-            $this->counter = 0;
-        }
-        return view('livewire.cart');
+        $this->update();
+        
+        return view('livewire.cart-fixed');
     }
 
     public function update()
