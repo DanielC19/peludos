@@ -22,9 +22,9 @@
                 </div>
             </div>
             <div class="navbar-item mr-5">
-                <div class="buttons">
+                <a href="{{ route('cart') }}" class="buttons">
                     <i class="fa-solid fa-cart-shopping fa-large"></i>
-                </div>
+                </a>
             </div>
             @guest
             <div class="navbar-item">

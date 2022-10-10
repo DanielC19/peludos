@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -26,3 +27,5 @@ Route::get('/',                     [HomeController::class, 'index'])->name('hom
 Route::get('/home',                 [HomeController::class, 'index'])->name('home');
 Route::get('/animal/{animal}',      [AnimalController::class, 'index'])->name('animal');
 Route::get('/category/{category}',  [CategoryController::class, 'index'])->name('category');
+Route::get('/cart',                 [CartController::class, 'index'])->name('cart');
+Route::get('/cart/delete/{id}',     [CartController::class, 'delete'])->name('cart.delete');
