@@ -61,10 +61,12 @@
     </div>
     <div class="navbar-end">
         <div class="control has-icons-left has-icons-right">
-            <input class="input is-small search-input" type="email" placeholder="Buscar">
-            <span class="icon is-small is-left">
-                <i class="fas fa-search fa-small"></i>
-            </span>
+            <form action="{{ route('search') }}" method="GET">
+                <input class="input is-small search-input" name="q" type="search" placeholder="Buscar">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-search fa-small"></i>
+                </span>
+            </form>
         </div>
     </div>
 </nav>
