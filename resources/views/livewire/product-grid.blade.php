@@ -26,7 +26,7 @@
         <hr>
         <button wire:click="addCart" class="product-cart button is-primary is-fullwidth mt-4 p-4">
             <div class="cart-1">¡Lo quiero!</div>
-            <div class="cart-2">Añadir al carrito</div>
+            <div class="cart-2">{{ $cart_msg }}</div>
         </button>
     </footer>
 </article>        

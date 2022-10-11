@@ -9,6 +9,7 @@ trait Product
     public $product;
     public $presentation_selected;
     public $price;
+    public $cart_msg = "Añadir al carrito";
 
     /**
      * * Acts like constructor
@@ -18,6 +19,15 @@ trait Product
     {
         $this->presentation_selected = $this->product->presentations[0]->id;
         $this->price = $this->product->presentations[0]->price;
+
+        // If product is on cart, change cart button msg
+        if (session()->has('cart')) {
+            foreach (session()->get('cart') as $product) {
+                if ($product->id == $this->product->id && $product->presentation == $this->presentation_selected) {
+                    $this->cart_msg = "¡Añadido al carrito!";
+                }
+            }
+        }
     }
 
     /**
@@ -27,6 +37,18 @@ trait Product
     {
         $this->presentation_selected = $presentation_id;
         $this->price = Presentation::find($presentation_id)->price;
+
+        // If product is on cart, change cart button msg
+        if (session()->has('cart')) {
+            foreach (session()->get('cart') as $product) {
+                if ($product->id == $this->product->id && $product->presentation == $this->presentation_selected) {
+                    $this->cart_msg = "¡Añadido al carrito!";
+                    break;
+                } else {
+                    $this->cart_msg = "Añadir al carrito";                    
+                }
+            }
+        }
     }
 
     /**
@@ -39,20 +61,24 @@ trait Product
             session()->put('cart', []);
         }
 
-        // Assign selected presentation to product}
-        $this->product->presentation = $this->presentation_selected;
-
         // Check this product isn't already on cart
         $add_product = true;
         foreach (session()->get('cart') as $product) {
-            if ($this->product->id == $product->id) {
+            if ($this->product->id == $product->id && $product->presentation == $this->presentation_selected) {
                 $add_product = false;
             }
         }
+
+        // Assign selected presentation to product
+        $this->product->presentation = $this->presentation_selected;
+
         if ($add_product) {
             // Add product to cart
             session()->push('cart', $this->product);
         }
+
+        // Change cart button message
+        $this->cart_msg = "¡Añadido al carrito!";
 
         // Emit an event to increment cart counter
         $this->emit('productAdded');
