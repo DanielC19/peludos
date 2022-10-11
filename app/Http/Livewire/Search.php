@@ -4,13 +4,33 @@ namespace App\Http\Livewire;
 
 use App\Models\Product;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Search extends Component
 {
+    use WithPagination;
+
     public $search;
 
+    // Speficies to use bootstrap theme on pagination
+    protected $paginationTheme = 'bootstrap';
+
+    /**
+     * Resets pagination to 1 when search input is updated
+     */
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
+    /**
+     * * Renders the component
+     * Searching for the query in search input
+     * also paginates
+     */
     public function render()
     {
+        // Don't take into account white spaces
         $search = trim($this->search);
 
         return view('livewire.search', [
@@ -18,7 +38,7 @@ class Search extends Component
                 'name',
                 'LIKE',
                 '%'.$search.'%'
-            )->get()
+            )->paginate(20)
         ]);
     }
 }

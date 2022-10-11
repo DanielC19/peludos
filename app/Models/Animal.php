@@ -22,18 +22,12 @@ class Animal extends Model
 
     static public function products($animal_id)
     {
-        $products_db = DB::table('products')
-            ->join('categories', 'products.category_id', '=', 'categories.id')
-            ->join('animals', 'categories.animal_id', '=', 'animals.id')
-            ->where('animals.id', '=', $animal_id)
-            ->orderByRaw('RAND()')
-            ->limit(20)
-            ->get(['products.id']);
-        // dd($products_db);
-        $products = [];
-        foreach ($products_db as $product) {
-            $products[] = Product::find($product->id);
-        }
+        $products = Product::where('animals.id', '=', $animal_id)
+                            ->select(['products.*'])
+                            ->join('categories', 'products.category_id', '=', 'categories.id')
+                            ->join('animals', 'categories.animal_id', '=', 'animals.id')
+                            ->paginate(20);
+
         return $products;
     }
     

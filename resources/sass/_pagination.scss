@@ -1,0 +1,43 @@
+@import 'variables';
+
+.pagination {
+    position: unset !important;
+    width: auto !important;
+    margin-bottom: 4rem;
+}
+
+.page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 42px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50% !important;
+    margin-inline: 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    color: $primary;
+}
+
+.page-link:hover {
+    color: $primary;
+}
+
+.active .page-link {
+    background-color: $primary;
+    color: $secondary;
+    border-color: $secondary;
+}
+
+.active .page-link:hover {
+    background-color: $secondary;
+    color: $primary;
+    border-color: $primary;
+}
+
+.page-item:first-child .page-link,
+.page-item:last-child .page-link {
+    font-size: 24px;
+    font-weight: bold;
+}
