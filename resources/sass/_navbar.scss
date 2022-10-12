@@ -6,9 +6,19 @@
     --bs-navbar-padding-y: 0;
 }
 
-.navbar-search {
-    background-color: $search-bg;
-    min-height: 40px;
+.navbar-burger {
+    margin-top: 0.5rem;
+    color: $white !important;
+}
+
+.navbar .is-active {
+    background-color: $navbar-bg;
+    box-shadow: none;
+    margin-bottom: 1.5rem;
+}
+
+.navbar .is-active .navbar-item {
+    margin-bottom: 1rem;
 }
 
 .navbar-item, 
@@ -28,6 +38,11 @@
 .logo-brand {
     max-height: none !important;
     width: 150px;
+}
+
+.navbar-search {
+    background-color: $search-bg;
+    min-height: 40px;
 }
 
 .search-input {
@@ -51,4 +66,43 @@
 .btn-animal:hover {
     color: $secondary !important;
     transition: ease 0.3s;
+}
+
+#animalsViewBtn {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    height: 120px;
+    padding: 0.5rem;
+    border-radius: 30px;
+}
+
+#animalsViewBtn p {
+    margin-bottom: 0.3rem;
+}
+
+#animalsViewBtn p:first-child {
+    font: bold 26px 'love_and_sunshine';
+    color: $white;
+}
+
+#animalsViewBtn p:last-child {
+    font-size: 14px;
+    color: $gray-light;
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .btn-animal {
+        display: none;
+    }
+}
+
+@media (min-width: 1024px) {
+    #navbar-cart-text {
+        display: none;
+    }
+    #animalsViewBtn {
+        display: none;
+    }
 }

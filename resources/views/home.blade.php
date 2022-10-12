@@ -24,7 +24,15 @@
     </div>
 </section>
 
-{{--  --}}
+{{-- Mobile button to search for animals --}}
+<div class="center">
+    <a href="{{ route('animals') }}" id="animalsViewBtn" class="button is-primary">
+        <p>¿como es tu peludo?</p>
+        <p>(Ver categorías)</p>
+    </a>
+</div>
+
+{{-- Product grid --}}
 @include('layouts.products')
 
 @endsection

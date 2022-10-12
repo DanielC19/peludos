@@ -5,11 +5,11 @@
             <img src="{{ Vite::asset('resources/img/logo-blanco.png') }}" class="logo-brand" alt="Logo Peludos">
         </a>
         {{-- Mobile menu --}}
-        {{-- <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+        <a role="button" class="navbar-burger ml-5" aria-label="menu" aria-expanded="false" data-target="navbar">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
-        </a> --}}
+        </a>
     </div>
 
     <div id="navbar" class="navbar-menu">
@@ -23,16 +23,18 @@
             </div>
             <div class="navbar-item mr-5">
                 <a href="{{ route('cart') }}" class="buttons">
-                    <i class="fa-solid fa-cart-shopping fa-large"></i>
+                    <span id="navbar-cart-text">ver carrito</span>
+                    <i class="fa-solid fa-cart-shopping fa-large ml-2"></i>
                 </a>
             </div>
             @guest
             <div class="navbar-item">
                 <div class="buttons">
-                    <a href="{{ route('register') }}" class="mr-4">
+                    <a href="{{ route('register') }}" class="mr-3">
                         <strong>Regístrate</strong>
                     </a>
-                    <a href="{{ route('login') }}">
+                    o
+                    <a href="{{ route('login') }}" class="ml-3">
                         Inicia sesión
                     </a>
                 </div>
