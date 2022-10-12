@@ -35,6 +35,8 @@ $search-bg: $secondary;
 // Not Bulma class but similar
 .is-secondary {
     background-color: $secondary;
+    color: $primary;
+    border-color: $primary;
 }
 .title {
     font-family: 'love_and_sunshine';
