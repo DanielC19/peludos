@@ -1,6 +1,10 @@
 <article>
     <div class="shopping-cart__info">
-        <span class="modify"><i class="fa-solid fa-eye fa-xl"></i> Ver más</span>
+        <span class="modify">
+            <a href="{{ route('product', $product->id) }}">
+                <i class="fa-solid fa-eye fa-xl"></i> Ver más
+            </a>
+        </span>
         <span>
             <img src="https://bulma.io/images/placeholders/1280x960.png" class="product-img" alt="Placeholder image">
         </span>

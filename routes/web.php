@@ -29,6 +29,7 @@ Route::get('/home',                 [HomeController::class, 'index'])->name('hom
 Route::get('/animals',              [AnimalController::class, 'all'])->name('animals');
 Route::get('/animal/{animal}',      [AnimalController::class, 'index'])->name('animal');
 Route::get('/category/{category}',  [CategoryController::class, 'index'])->name('category');
+Route::get('/product/{id}',         [ProductController::class, 'index'])->name('product');
 Route::get('/cart',                 [CartController::class, 'index'])->name('cart');
 Route::get('/cart/delete/{id}',     [CartController::class, 'delete'])->name('cart.delete');
 Route::get('/search',               [ProductController::class, 'search'])->name('search');
