@@ -14,4 +14,11 @@ class AnimalController extends Controller
         $products = Animal::products($animal->id);
         return view('animal', compact('products', 'animal'));
     }
+
+    public function all()
+    {
+        $animals = Animal::all();
+
+        return view('animals-all', compact('animals'));
+    }
 }

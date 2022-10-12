@@ -26,6 +26,7 @@ Route::get('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('
 // User routes
 Route::get('/',                     [HomeController::class, 'index'])->name('home');
 Route::get('/home',                 [HomeController::class, 'index'])->name('home');
+Route::get('/animals',              [AnimalController::class, 'all'])->name('animals');
 Route::get('/animal/{animal}',      [AnimalController::class, 'index'])->name('animal');
 Route::get('/category/{category}',  [CategoryController::class, 'index'])->name('category');
 Route::get('/cart',                 [CartController::class, 'index'])->name('cart');
