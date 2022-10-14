@@ -31,7 +31,7 @@
     object-fit: cover;
 }
 
-.pagination {
+.banner-pagination {
     position: absolute;
     bottom: 20px;
     left: 0;
@@ -82,7 +82,7 @@ input[id="1"]:checked~.slide {
     transform: translate3d(0, 0, 0);
 }
 
-input[id="1"]:checked~.pagination .pagination-item[for="1"] {
+input[id="1"]:checked~.banner-pagination .pagination-item[for="1"] {
     background: #fff;
 }
 
@@ -91,7 +91,7 @@ input[id="2"]:checked~.slide {
     transform: translate3d(calc(-100% * 1), 0, 0);
 }
 
-input[id="2"]:checked~.pagination .pagination-item[for="2"] {
+input[id="2"]:checked~.banner-pagination .pagination-item[for="2"] {
     background: #fff;
 }
 
@@ -101,7 +101,7 @@ input[id="3"]:checked~.slide {
     transform: translate3d(calc(-100% * 2), 0, 0);
 }
 
-input[id="3"]:checked~.pagination .pagination-item[for="3"] {
+input[id="3"]:checked~.banner-pagination .pagination-item[for="3"] {
     background: #fff;
 }
 

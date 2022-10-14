@@ -15,7 +15,7 @@
         @endfor
     </div>
 
-    <div class="pagination"> 
+    <div class="banner-pagination"> 
         @for ($i = 1; $i <= 3; $i++)
         <label class="pagination-item" for="{{ $i }}">
             <img src="{{ Vite::asset("resources/img/img$i.jpg") }}">
@@ -25,7 +25,7 @@
 </section>
 
 {{-- Mobile button to search for animals --}}
-<div class="center">
+<div class="center mt-5">
     <a href="{{ route('animals') }}" id="animalsViewBtn" class="button is-primary">
         <p>¿como es tu peludo?</p>
         <p>(Ver categorías)</p>
