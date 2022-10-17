@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Animal;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
 
@@ -35,6 +36,9 @@ class ConfirmPasswordController extends Controller
      */
     public function __construct()
     {
+        $animals = Animal::all();
+        view()->share('animals_header', $animals);
+
         $this->middleware('auth');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Animal;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -38,6 +39,9 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        $animals = Animal::all();
+        view()->share('animals_header', $animals);
+
         $this->middleware('guest');
     }
 
