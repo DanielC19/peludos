@@ -10,7 +10,7 @@
         </span>
         <span class="info">
             <p>{{ $product->name }}</p>
-            <p class="caption">Presentación: {{ $presentation }}</p>
+            <p class="caption">Presentación: {{ $presentation->amount }}</p>
         </span>
         <div class="is-desktop">
             <span class="is-flex is-align-items-center">

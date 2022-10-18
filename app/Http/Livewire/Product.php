@@ -23,7 +23,7 @@ trait Product
         // If product is on cart, change cart button msg
         if (session()->has('cart')) {
             foreach (session()->get('cart') as $product) {
-                if ($product->id == $this->product->id && $product->presentation == $this->presentation_selected) {
+                if ($product->id == $this->product->id && $product->presentation->id == $this->presentation_selected) {
                     $this->cart_msg = "¡Añadido al carrito!";
                 }
             }
@@ -41,7 +41,7 @@ trait Product
         // If product is on cart, change cart button msg
         if (session()->has('cart')) {
             foreach (session()->get('cart') as $product) {
-                if ($product->id == $this->product->id && $product->presentation == $this->presentation_selected) {
+                if ($product->id == $this->product->id && $product->presentation->id == $this->presentation_selected) {
                     $this->cart_msg = "¡Añadido al carrito!";
                     break;
                 } else {
@@ -64,15 +64,18 @@ trait Product
         // Check this product isn't already on cart
         $add_product = true;
         foreach (session()->get('cart') as $product) {
-            if ($this->product->id == $product->id && $product->presentation == $this->presentation_selected) {
+            if ($this->product->id == $product->id && $product->presentation->id == $this->presentation_selected) {
                 $add_product = false;
             }
         }
-
-        // Assign selected presentation to product
-        $this->product->presentation = $this->presentation_selected;
-
+        
         if ($add_product) {
+            // Assign selected presentation to product
+            foreach ($this->product->presentations as $presentation) {
+                if ($this->presentation_selected == $presentation->id) {
+                    $this->product->presentation = $presentation;
+                }
+            }
             // Add product to cart
             session()->push('cart', $this->product);
         }
