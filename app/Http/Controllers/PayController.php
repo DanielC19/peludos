@@ -50,4 +50,42 @@ class PayController extends Controller
 
         return view('pay', compact('products', 'user', 'total_price', 'total_amount', 'payU'));
     }
+
+    /**
+     * * Function that recieves response from PayU to generate payment
+     * Confirmation URL
+     */
+    public function pay(Request $request)
+    {
+        // TODO: Cast reference to int
+        // Find the order by its reference_code
+        $order = Order::find($request->reference_sale);
+        if ($order === null) {
+            Order::create(['id' => $request->reference_sale]);
+            $order = Order::find($request->reference_sale);
+        }
+        // Save each field of the response ir the order
+        $order->state = $request->state_pol;
+        $order->transaction_id = $request->transaction_id;
+        $order->value = $request->value;
+        $order->tax = $request->tax;
+        $order->transaction_date = $request->transaction_date;
+        $order->email = $request->email_buyer;
+        $order->cellphone = $request->phone;
+        $order->address = $request->shipping_address;
+        // If a registered user payed, save shipping info and its reference in the order
+        $user = User::where('email', $request->email_buyer)->first();
+        if ($user !== null) {
+            $order->user_id = $user->id;
+            $user->cellphone = $request->phone;                
+            $user->address = $request->shipping_address;                
+            $user->save();
+        }
+        // Save order with all data
+        $order->save();
+        
+        session()->put('cart', []);
+
+        return true;
+    }
 }
