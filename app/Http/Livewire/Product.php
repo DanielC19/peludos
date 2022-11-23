@@ -76,6 +76,11 @@ trait Product
                     $this->product->presentation = $presentation;
                 }
             }
+            // Asign default amount of products
+            if ($this->product->amount == null) {
+                $this->product->amount = 1;
+            }
+
             // Add product to cart
             session()->push('cart', $this->product);
         }

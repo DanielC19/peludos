@@ -1,0 +1,19 @@
+@import 'variables';
+
+@media (min-width: 700px) {
+    .pay {
+        margin-inline: 7rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .pay {
+        margin-inline: 15rem;
+    }
+}
+
+@media (min-width: 1500px) {
+    .pay {
+        margin-inline: 22rem;
+    }
+}

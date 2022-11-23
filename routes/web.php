@@ -33,3 +33,5 @@ Route::get('/product/{id}',         [ProductController::class, 'index'])->name('
 Route::get('/cart',                 [CartController::class, 'index'])->name('cart');
 Route::get('/cart/delete/{id}',     [CartController::class, 'delete'])->name('cart.delete');
 Route::get('/search',               [ProductController::class, 'search'])->name('search');
+Route::get('/pay',                  [PayController::class, 'index'])->name('pay');
+Route::post('/pay/response',        [PayController::class, 'pay'])->name('pay.response');
