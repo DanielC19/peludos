@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="tile is-vertical center p-5">
-            <img src="{{ Vite::asset('resources/img/logo-blanco.png') }}" class="logo-brand" alt="Logo Peludos">
+            <img src="{{ asset('storage/images/logo-blanco.png') }}" class="logo-brand" alt="Logo Peludos">
         </div>
     </div>
 </footer>

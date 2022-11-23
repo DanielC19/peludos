@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Peludos | Todo para tu mascota</title>
-    <link rel="shortcut icon" href="{{ Vite::asset('resources/img/perro.svg') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ asset('storage/images/perro.svg') }}" type="image/x-icon">
 
     {{-- Import Bulma --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">

@@ -2,7 +2,7 @@
     {{-- Logo --}}
     <div class="navbar-brand">
         <a class="navbar-item" href="{{ route('home') }}">
-            <img src="{{ Vite::asset('resources/img/logo-blanco.png') }}" class="logo-brand" alt="Logo Peludos">
+            <img src="{{ asset('storage/images/logo-blanco.png') }}" class="logo-brand" alt="Logo Peludos">
         </a>
         {{-- Mobile menu --}}
         <a role="button" class="navbar-burger ml-5" aria-label="menu" aria-expanded="false" data-target="navbar">
@@ -56,7 +56,7 @@
     <div class="navbar-start">
         @foreach ($animals_header as $animal_header)
         <a href="{{ route('animal', $animal_header->name) }}" class="navbar-item btn-animal">
-            <img src="{{ Vite::asset("resources/img/$animal_header->image") }}" alt="Logo {{ $animal_header->name }}">
+            <img src="{{ asset("storage/images/$animal_header->image") }}" alt="Logo {{ $animal_header->name }}">
             {{ strtolower($animal_header->name) }}
         </a>            
         @endforeach

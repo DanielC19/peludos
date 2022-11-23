@@ -10,7 +10,7 @@
     <div class="slide">
         @for ($i = 1; $i <= 3; $i++)
         <div class="item-slide">
-            <img src="{{ Vite::asset("resources/img/img$i.jpg") }}">
+            <img src="{{ asset("storage/images/img$i.jpg") }}">
         </div>            
         @endfor
     </div>
@@ -18,7 +18,7 @@
     <div class="banner-pagination"> 
         @for ($i = 1; $i <= 3; $i++)
         <label class="pagination-item" for="{{ $i }}">
-            <img src="{{ Vite::asset("resources/img/img$i.jpg") }}">
+            <img src="{{ asset("storage/images/img$i.jpg") }}">
         </label>              
         @endfor 
     </div>

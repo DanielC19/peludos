@@ -5,7 +5,7 @@
 <section class="animals section center">
     @foreach ($animals as $animal)
         <a href="{{ route('animal', $animal->name) }}" class="button">
-            <img src="{{ Vite::asset("resources/img/$animal->image") }}" alt="Logo {{ $animal->name }}">
+            <img src="{{ asset("storage/images/$animal->image") }}" alt="Logo {{ $animal->name }}">
             <p>{{ strtolower($animal->name) }}</p>
         </a>
     @endforeach
