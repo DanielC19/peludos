@@ -11,6 +11,9 @@
             @livewire('cart-product', ['product' => $product], key($product->id))
         @endforeach
     </section>
+    <div class="center mb-5">
+        <a href="{{ route('pay') }}" class="button is-primary is-rounded is-medium">Ir a Pagar</a>
+    </div>
 @else
     <section class="section center is-flex-direction-column my-3">
         <p class="is-size-4">No tienes ningún producto en el carrito de compras :(</p>

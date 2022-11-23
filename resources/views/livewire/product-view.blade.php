@@ -16,7 +16,7 @@
         </div>
         <div class="product-buttons">
             <button wire:click="addCart" class="product-button button is-primary">{{ $cart_msg }}</button>
-            <a class="product-button button is-secondary">Compra rápida</a>
+            <button wire:click="buyFast" class="product-button button is-secondary">Compra rápida</button>
         </div>
     </div>
 </section>

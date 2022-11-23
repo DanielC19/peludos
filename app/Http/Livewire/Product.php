@@ -91,4 +91,19 @@ trait Product
         // Emit an event to increment cart counter
         $this->emit('productAdded');
     }
+
+    /**
+     * * Option to fast buy one article
+     * Deletes all products on cart and redirects to pay view
+     */
+    public function buyFast()
+    {
+        // Empty cart (or create it)
+        session()->put('cart', []);
+        // Add this product to cart
+        $this->addCart();
+
+        // Redirect to pay
+        redirect()->route('pay');
+    }
 }
