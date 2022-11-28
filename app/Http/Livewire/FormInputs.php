@@ -19,6 +19,10 @@ class FormInputs extends Component
         'address' => 'required|string|max:255',
     ];
 
+    protected $listeners = [
+        'validateForm' => 'validateAll',
+    ];
+
     public function mount()
     {
         if ($this->user != null) {
@@ -40,6 +44,20 @@ class FormInputs extends Component
         $this->emit('disableSubmit');
         // Validate current field
         $this->validateOnly($propertyName);
+        try {
+            // Validate in a try/catch block to intercept the validation error.
+            $this->validate();
+
+            // If no exception was thrown, the form is valid, so we enable the button.
+            $this->emit('enableSubmit');
+        } catch (\Exception $e) {
+            // If the global validation failed, keep the button disabled.
+            $this->emit('disableSubmit');
+        }
+    }
+
+    public function validateAll()
+    {
         try {
             // Validate in a try/catch block to intercept the validation error.
             $this->validate();

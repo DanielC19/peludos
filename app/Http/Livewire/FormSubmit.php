@@ -18,6 +18,11 @@ class FormSubmit extends Component
         return view('livewire.form-submit');
     }
 
+    public function validateForm()
+    {
+        $this->emit('validateForm');
+    }
+
     public function enable()
     {
         $this->can_submit = true;
