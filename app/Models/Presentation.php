@@ -19,4 +19,9 @@ class Presentation extends Model
         'amount',
         'price'
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

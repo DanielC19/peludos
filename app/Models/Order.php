@@ -64,4 +64,9 @@ class Order extends Model
         // return referenco code
         return $number;
     }
+
+    public function products()
+    {
+        return $this->hasMany(OrderedProduct::class);
+    }
 }

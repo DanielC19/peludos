@@ -19,4 +19,9 @@ class OrderedProduct extends Model
         'product_id',
         'quantity',
     ];
+
+    public function presentation()
+    {
+        return $this->hasOne(Presentation::class, 'id', 'product_id');
+    }
 }
