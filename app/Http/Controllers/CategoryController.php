@@ -13,6 +13,6 @@ class CategoryController extends Controller
         $category = Category::find($category_id);
         $products = Product::where('category_id', $category_id)->paginate(20);
 
-        return view('category', compact('category', 'products'));
+        return view('user.category', compact('category', 'products'));
     }
 }

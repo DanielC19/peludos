@@ -12,13 +12,13 @@ class AnimalController extends Controller
         $animals = Animal::where('name', $animal_name)->get();
         $animal = $animals[0];
         $products = Animal::products($animal->id);
-        return view('animal', compact('products', 'animal'));
+        return view('user.animal', compact('products', 'animal'));
     }
 
     public function all()
     {
         $animals = Animal::all();
 
-        return view('animals-all', compact('animals'));
+        return view('user.animals-all', compact('animals'));
     }
 }

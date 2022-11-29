@@ -48,7 +48,7 @@ class PayController extends Controller
             'response_url' => route('pay.confirm'),
         ];
 
-        return view('pay', compact('products', 'user', 'total_price', 'total_amount', 'payU'));
+        return view('user.pay', compact('products', 'user', 'total_price', 'total_amount', 'payU'));
     }
 
     /**
@@ -113,6 +113,6 @@ class PayController extends Controller
             array_push($products, $product);
         }
 
-        return view('confirm', compact('products', 'total_price', 'total_amount' ,'order'));
+        return view('user.confirm', compact('products', 'total_price', 'total_amount' ,'order'));
     }
 }

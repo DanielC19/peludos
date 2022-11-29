@@ -17,7 +17,7 @@ class CartController extends Controller
             $products = [];
         }
 
-        return view('cart', compact('products'));
+        return view('user.cart', compact('products'));
     }
 
     /**

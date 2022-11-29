@@ -11,13 +11,13 @@ class ProductController extends Controller
     {
         $product = Product::find($product_id);
 
-        return view('product', compact('product'));
+        return view('user.product', compact('product'));
     }
 
     public function search(Request $request)
     {
         $search = $request->q;
 
-        return view('search', compact('search'));
+        return view('user.search', compact('search'));
     }
 }

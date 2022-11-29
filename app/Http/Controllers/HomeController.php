@@ -13,6 +13,6 @@ class HomeController extends Controller
         // Sets variable to don't try to paginate products in home view
         $home_view = true;
 
-        return view('home', compact('products', 'home_view'));
+        return view('user.home', compact('products', 'home_view'));
     }
 }
