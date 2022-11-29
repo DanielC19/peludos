@@ -57,7 +57,6 @@ class PayController extends Controller
      */
     public function pay(Request $request)
     {
-        // TODO: Cast reference to int
         // Find the order by its reference_code
         $order = Order::find($request->reference_sale);
         if ($order === null) {
@@ -84,8 +83,6 @@ class PayController extends Controller
         // Save order with all data
         $order->save();
         
-        session()->put('cart', []);
-
         return true;
     }
 }

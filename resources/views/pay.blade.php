@@ -36,7 +36,7 @@
         <div class="my-5">
             <h3 class="mb-4">Información envío</h3> 
             {{-- Inputs for shipping --}}
-            @livewire('form-inputs', ['user' => $user])                                             
+            @livewire('form-inputs', ['user' => $user, 'reference_code' => $payU["reference_code"]])                                             
             {{-- PayU inputs for request --}}
             <input name="merchantId"      type="hidden"  value="{{ $payU["merchant_id"] }}">
             <input name="accountId"       type="hidden"  value="{{ $payU["account_id"] }}">

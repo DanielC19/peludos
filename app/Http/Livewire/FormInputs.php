@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Order;
 use Livewire\Component;
 
 class FormInputs extends Component
 {
+    public $reference_code;
     public $user;
     public $name;
     public $email;
@@ -21,6 +23,7 @@ class FormInputs extends Component
 
     protected $listeners = [
         'validateForm' => 'validateAll',
+        'pay' => 'pay',
     ];
 
     public function mount()
@@ -68,5 +71,13 @@ class FormInputs extends Component
             // If the global validation failed, keep the button disabled.
             $this->emit('disableSubmit');
         }
+    }
+
+    public function pay()
+    {
+        // Save user's name in the order
+        $order = Order::find($this->reference_code);
+        $order->name = $this->name;
+        $order->save();
     }
 }

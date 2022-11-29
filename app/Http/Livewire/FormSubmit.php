@@ -32,4 +32,10 @@ class FormSubmit extends Component
     {
         $this->can_submit = false;
     }
+    
+    public function pay()
+    {
+        $this->emit('pay');
+        session()->put('cart', []);    
+    }
 }
