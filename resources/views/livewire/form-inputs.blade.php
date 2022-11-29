@@ -30,6 +30,15 @@
         @error('cellphone') <span class="help is-danger">{{ $message }}</span> @enderror
     </div>
     <div class="field">
+        <label class="label">Ciudad</label>
+        <div class="control has-icons-left has-icons-right">
+            <input type="text" class="input" value="Medellín" disabled readonly>
+            <span class="icon is-small is-left">
+                <i class="fa-solid fa-city"></i>
+            </span>
+        </div>
+    </div>
+    <div class="field">
         <label class="label">Dirección</label>
         <div class="control has-icons-left has-icons-right">
             <input name="shippingAddress" wire:model="address" type="text" placeholder="Ingresa tu dirección" class="input" maxlength="250">
