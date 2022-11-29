@@ -36,3 +36,4 @@ Route::get('/cart/delete/{id}',     [CartController::class, 'delete'])->name('ca
 Route::get('/search',               [ProductController::class, 'search'])->name('search');
 Route::get('/pay',                  [PayController::class, 'index'])->name('pay');
 Route::post('/pay/response',        [PayController::class, 'pay'])->name('pay.response');
+Route::get('/pay/confirm',          [PayController::class, 'confirm'])->name('pay.confirm');

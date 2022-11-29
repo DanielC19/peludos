@@ -85,4 +85,34 @@ class PayController extends Controller
         
         return true;
     }
+
+    /**
+     * * PayU redirects here to show final payment confirmation
+     * Response URL
+     */
+    public function confirm(Request $request)
+    {
+        // Share that this is the cart view to not show fixed cart
+        view()->share('cart_full_view', true);
+
+        // Get order and all its products
+        $order = Order::find($request->referenceCode);
+        $ordered_products = $order->products;
+
+        // Add all items and its price
+        $total_price = 0;
+        $total_amount = 0;
+        $products = [];
+        foreach ($ordered_products as $ordered_product) {
+            $product = $ordered_product->presentation->product;
+            $product->presentation = $ordered_product->presentation;
+            $product->amount = $ordered_product->quantity;
+            $product->price = $product->presentation->price * $product->amount;
+            $total_price += $product->price;
+            $total_amount += $product->amount;
+            array_push($products, $product);
+        }
+
+        return view('confirm', compact('products', 'total_price', 'total_amount' ,'order'));
+    }
 }
