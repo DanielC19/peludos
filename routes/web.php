@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
@@ -24,7 +25,9 @@ Auth::routes();
 // Overcharge logout route, it appears to be POST originally and it cannot be
 Route::get('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
-// User routes
+/**
+ * * USER ROUTES
+ */
 Route::get('/',                     [HomeController::class, 'index'])->name('home');
 Route::get('/home',                 [HomeController::class, 'index'])->name('home');
 Route::get('/animals',              [AnimalController::class, 'all'])->name('animals');
@@ -37,3 +40,22 @@ Route::get('/search',               [ProductController::class, 'search'])->name(
 Route::get('/pay',                  [PayController::class, 'index'])->name('pay');
 Route::post('/pay/response',        [PayController::class, 'pay'])->name('pay.response');
 Route::get('/pay/confirm',          [PayController::class, 'confirm'])->name('pay.confirm');
+
+
+/**
+ * * ADMIN ROUTES
+ */
+Route::prefix('admin')->group(function () {
+    Route::group(['middleware' => ['can:edit_settings']], function () {
+        
+    });
+    
+    Route::group(['middleware' => ['can:edit_products']], function () {
+        Route::resource('products', AdminProductController::class);
+        Route::resource('presentations', AdminPresentationController::class);
+    });
+    
+    Route::group(['middleware' => ['can:view_orders']], function () {
+
+    });
+});

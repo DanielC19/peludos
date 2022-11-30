@@ -15,12 +15,24 @@
     <div id="navbar" class="navbar-menu">
         {{-- Right navbar --}}
         <div class="navbar-end">
+            @can('admin_view')
+            <div class="navbar-item mr-5">
+                <div class="buttons">
+                    @if (isset($admin_view))
+                    <a href="{{ route('home') }}">Vista Usuario</a>
+                    @else
+                    <a href="{{ route('products.index') }}">Vista Admin</a>
+                    @endif
+                </div>
+            </div>                
+            @elsecan()
             <div class="navbar-item mr-5">
                 <div class="buttons">
                     <span>escríbenos</span>
                     <i class="fa-brands fa-whatsapp fa-large ml-2"></i>
                 </div>
-            </div>
+            </div>    
+            @endcan
             <div class="navbar-item mr-5">
                 <a href="{{ route('cart') }}" class="buttons">
                     <span id="navbar-cart-text">ver carrito</span>
@@ -53,6 +65,8 @@
     </div>
 </nav>
 <nav class="navbar navbar-search">
+    {{-- User view --}}
+    @if (!isset($admin_view))
     <div class="navbar-start">
         @foreach ($animals_header as $animal_header)
         <a href="{{ route('animal', $animal_header->name) }}" class="navbar-item btn-animal">
@@ -71,4 +85,28 @@
             </form>
         </div>
     </div>
+    {{-- Admin view --}}
+    @else
+    <div class="center w-100">
+        @can('edit_settings')
+        <a href="{{ route('products.index') }}" class="navbar-item btn-animal mx-4">
+            ajustes
+        </a>             
+        @endcan
+        @can('edit_products')
+        <a href="{{ route('products.index') }}" class="navbar-item btn-animal mx-4">
+            productos
+        </a> 
+        <a href="{{ route('products.index') }}" class="navbar-item btn-animal mx-4">
+            categorías
+        </a> 
+        @endcan
+        @can('view_orders')
+        <a href="{{ route('products.index') }}" class="navbar-item btn-animal mx-4">
+            pedidos
+        </a>             
+        @endcan
+    </div>
+    @endif
 </nav>
+    
