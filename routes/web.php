@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPresentationController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\CartController;
@@ -51,8 +52,15 @@ Route::prefix('admin')->group(function () {
     });
     
     Route::group(['middleware' => ['can:edit_products']], function () {
+        // Products
         Route::resource('products', AdminProductController::class);
-        Route::resource('presentations', AdminPresentationController::class);
+        Route::get('products/available/{id}',       [AdminProductController::class, 'toggleAvailability'])->name('products.available');
+        // Presentations
+        Route::get('presentations/create/{id}',     [AdminPresentationController::class, 'create'])->name('presentations.create');
+        Route::post('presentations/store',          [AdminPresentationController::class, 'store'])->name('presentations.store');
+        Route::get('presentations/edit/{id}',       [AdminPresentationController::class, 'edit'])->name('presentations.edit');
+        Route::post('presentations/update',         [AdminPresentationController::class, 'update'])->name('presentations.update');
+        Route::get('presentations/available/{id}',  [AdminPresentationController::class, 'toggleAvailability'])->name('presentations.available');
     });
     
     Route::group(['middleware' => ['can:view_orders']], function () {
