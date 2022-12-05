@@ -97,7 +97,7 @@
         <a href="{{ route('products.index') }}" class="navbar-item btn-animal mx-4">
             productos
         </a> 
-        <a href="{{ route('products.index') }}" class="navbar-item btn-animal mx-4">
+        <a href="{{ route('categories.index') }}" class="navbar-item btn-animal mx-4">
             categorías
         </a> 
         @endcan

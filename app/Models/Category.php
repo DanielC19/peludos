@@ -2,22 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    use HasFactory;
+    
+    static $rules = [
+		'animal_id' => 'required',
+		'name' => 'required',
+    ];
+
+    protected $perPage = 20;
 
     /**
-     * The attributes that are mass assignable.
+     * Attributes that should be mass-assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
-    protected $fillable = [
-        'animal_id',
-        'name',
-    ];
+    protected $fillable = ['animal_id','name'];
+
 
     public function products()
     {
