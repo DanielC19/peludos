@@ -2,23 +2,47 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Presentation extends Model
-{
-    use HasFactory;
+{ 
+    static $rules = [
+        'product_id' => 'required',
+        'amount' => 'required',
+        'price' => 'required',
+    ];
+
+    protected $perPage = 20;
 
     /**
-     * The attributes that are mass assignable.
+     * Attributes that should be mass-assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
-    protected $fillable = [
-        'product_id',
-        'amount',
-        'price'
-    ];
+    protected $fillable = ['id', 'product_id','amount','price', 'availability'];
+
+    static public function generateId(): int
+    {
+        $number = mt_rand(1000000000, 9999999999);
+
+        // call the same function if the id exists already
+        if (Presentation::whereId($number)->exists()) {
+            return Presentation::generateId();
+        }
+
+        // return id
+        return $number;
+    }
+
+    public function toggleAvailability()
+    {
+        if ($this->availability) {
+            $this->availability = false;
+        } else {
+            $this->availability = true;
+        }
+        $this->save();
+    }
 
     public function product()
     {

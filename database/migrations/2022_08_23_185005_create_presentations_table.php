@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained();
             $table->string('amount');
             $table->bigInteger('price');
+            $table->boolean('availability');
             $table->timestamps();
         });
     }
