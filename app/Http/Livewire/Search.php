@@ -34,11 +34,12 @@ class Search extends Component
         $search = trim($this->search);
 
         return view('livewire.search', [
-            'products' => Product::where(
-                'name',
-                'LIKE',
-                '%'.$search.'%'
-            )->paginate(20)
+            'products' => Product::with('presentations')
+                                ->where(
+                                    'name',
+                                    'LIKE',
+                                    '%'.$search.'%'
+                                )->paginate(20)
         ]);
     }
 }
