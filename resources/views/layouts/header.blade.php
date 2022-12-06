@@ -1,9 +1,15 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
     {{-- Logo --}}
     <div class="navbar-brand">
+        @if (!isset($admin_view))
         <a class="navbar-item" href="{{ route('home') }}">
             <img src="{{ asset('storage/images/logo-blanco.png') }}" class="logo-brand" alt="Logo Peludos">
         </a>
+        @else
+        <a class="navbar-item" href="{{ route('orders') }}">
+            <img src="{{ asset('storage/images/logo-blanco.png') }}" class="logo-brand" alt="Logo Peludos">
+        </a>
+        @endif
         {{-- Mobile menu --}}
         <a role="button" class="navbar-burger ml-5" aria-label="menu" aria-expanded="false" data-target="navbar">
             <span aria-hidden="true"></span>
@@ -25,7 +31,7 @@
                     @endif
                 </div>
             </div>                
-            @elsecan()
+            @else
             <div class="navbar-item mr-5">
                 <div class="buttons">
                     <span>escríbenos</span>
@@ -102,7 +108,7 @@
         </a> 
         @endcan
         @can('view_orders')
-        <a href="{{ route('products.index') }}" class="navbar-item btn-animal mx-4">
+        <a href="{{ route('orders') }}" class="navbar-item btn-animal mx-4">
             pedidos
         </a>             
         @endcan

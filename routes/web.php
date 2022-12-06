@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminPresentationController;
 use App\Http\Controllers\AdminProductController;
 use App\Http\Controllers\AnimalController;
@@ -67,6 +68,7 @@ Route::prefix('admin')->group(function () {
     });
     
     Route::group(['middleware' => ['can:view_orders']], function () {
-
+        Route::get('orders',            [AdminOrderController::class, 'index'])->name('orders');
+        Route::get('orders/show/{id}',  [AdminOrderController::class, 'show'])->name('orders.show');
     });
 });
