@@ -57,7 +57,9 @@ class Order extends Model
         foreach ($products as $product) {
             OrderedProduct::create([
                 'order_id' => $number,
-                'product_id' => $product->presentation->id
+                'product_id' => $product->presentation->id,
+                'price' => $product->presentation->price,
+                'quantity' => $product->amount,
             ]);
         }
 
