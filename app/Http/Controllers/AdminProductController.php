@@ -20,7 +20,7 @@ class AdminProductController extends AdminController
      */
     public function index()
     {
-        $products = Product::with('category')->paginate();
+        $products = Product::with('category.animal')->paginate();
 
         return view('admin.product.index', compact('products'))
             ->with('i', (request()->input('page', 1) - 1) * $products->perPage());
