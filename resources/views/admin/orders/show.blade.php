@@ -9,7 +9,7 @@
                         <h2 class="center w-100">
                             Detalle Pedido
                         </h2>
-                        <a href="{{ route('orders') }}" class="button is-primary mr-4">
+                        <a href="{{ url()->previous() }}" class="button is-primary mr-4">
                             Atrás
                         </a>
                     </div>

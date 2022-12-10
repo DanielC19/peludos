@@ -12,7 +12,7 @@
                         <h2 class="center w-100">
                             Editar Presentación
                         </h2>
-                        <a href="{{ route('products.show', $presentation->product->id) }}" class="button is-primary">
+                        <a href="{{ url()->previous() }}" class="button is-primary">
                             Atrás
                         </a>
                     </div>

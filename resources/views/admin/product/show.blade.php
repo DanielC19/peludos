@@ -9,7 +9,7 @@
                         <h2 class="center w-100">
                             Detalle Producto
                         </h2>
-                        <a href="{{ route('products.index') }}" class="button is-primary mr-4">
+                        <a href="{{ url()->previous() }}" class="button is-primary mr-4">
                             Atrás
                         </a>
                         <a href="{{ route('presentations.create', $product->id) }}" class="button is-secondary">
