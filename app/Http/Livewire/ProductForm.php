@@ -3,11 +3,13 @@
 namespace App\Http\Livewire;
 
 use App\Models\Category;
-use App\Models\Product;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class ProductForm extends Component
 {
+    use WithFileUploads;
+
     public $product;
     public $animals;
     public $animal_id;
@@ -21,7 +23,7 @@ class ProductForm extends Component
         'animal_id' => 'required',
         'category_id' => 'required',
         'name' => 'required',
-        'image' => 'required',
+        'image' => 'required|image',
     ];
 
     public function mount()

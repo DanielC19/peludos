@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Animal;
 use App\Models\Category;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 /**
  * Class AdminProductController
@@ -49,11 +51,15 @@ class AdminProductController extends AdminController
 
         $id = Product::generateId();
 
+        $timestamp = Carbon::now()->timestamp;
+        $filename = "product_$timestamp.jpg";
+        $image = $request->image->storeAs('uploads', $filename, 'public');
+
         Product::create([
             'id' => $id,
             'category_id' => $request->category_id,
             'name' => $request->name,
-            'image' => $request->image,
+            'image' => $image,
             'availability' => true,
         ]);
 
@@ -99,7 +105,17 @@ class AdminProductController extends AdminController
     {
         request()->validate(Product::$rules);
 
-        $product->update($request->all());
+        File::delete("storage/$product->image");
+
+        $timestamp = Carbon::now()->timestamp;
+        $filename = "product_$timestamp.jpg";
+        $image = $request->image->storeAs('uploads', $filename, 'public');
+
+        $product->update([
+            'category_id' => $request->category_id,
+            'name' => $request->name,
+            'image' => $image,
+        ]);
 
         return redirect()->route('products.index')
             ->with('success', 'Producto actualizado correctamente');

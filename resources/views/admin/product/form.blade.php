@@ -42,8 +42,18 @@
         </div>
         <div class="field mb-3">
             <label for="image" class="label">Imagen</label>
-            <div class="control">
-                <input type="number" name="image" class="input" placeholder="Imagen Producto" wire:model="image">
+            <div class="file">
+                <label class="file-label">
+                    <input class="file-input" type="file" name="image" wire:model="image">
+                    <span class="file-cta">
+                        <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                            Escoge un archivo…
+                        </span>
+                    </span>
+                </label>
             </div>
         </div>
 
