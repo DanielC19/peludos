@@ -1,0 +1,15 @@
+{
+    "name": "peludos",
+    "short_name": "peludos",
+    "start_url": ".",
+    "background_color": "#6777ef",
+    "description": "Todo para tu mascota",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "storage/images/perro.svg",
+            "sizes": "134x104",
+            "type": "image/png"
+        }
+    ]
+}
