@@ -46,8 +46,11 @@
 }
 
 @media (min-width: 1024px) {
-    .product-view {
+    .product-layout {
         display: flex;
+    }
+
+    .product-view {
         margin-inline: 10rem;
     }
 
