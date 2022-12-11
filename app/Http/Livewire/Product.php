@@ -17,8 +17,13 @@ trait Product
      */
     public function mount()
     {
-        $this->presentation_selected = $this->product->presentations[0]->id;
-        $this->price = $this->product->presentations[0]->price;
+        foreach ($this->product->presentations as $presentation) {
+            if ($presentation->availability) {
+                $this->presentation_selected = $presentation->id;
+                $this->price = $presentation->price;
+                break;
+            }
+        }
 
         // If product is on cart, change cart button msg
         if (session()->has('cart')) {
@@ -56,6 +61,12 @@ trait Product
      */
     public function addCart()
     {
+        if (!$this->product->availability) {
+            // Change cart button message
+            $this->cart_msg = "Producto Agotado";
+            return;
+        }
+
         // If there's nothing, create empty cart
         if (session()->missing('cart')) {
             session()->put('cart', []);
@@ -73,6 +84,11 @@ trait Product
             // Assign selected presentation to product
             foreach ($this->product->presentations as $presentation) {
                 if ($this->presentation_selected == $presentation->id) {
+                    if (!$presentation->availability) {
+                        // Change cart button message
+                        $this->cart_msg = "Presentación Agotada";
+                        return;
+                    }
                     $this->product->presentation = $presentation;
                 }
             }
@@ -98,6 +114,12 @@ trait Product
      */
     public function buyFast()
     {
+        if (!$this->product->availability) {
+            // Change cart button message
+            $this->cart_msg = "Producto Agotado";
+            return;
+        }
+
         // Empty cart (or create it)
         session()->put('cart', []);
         // Add this product to cart

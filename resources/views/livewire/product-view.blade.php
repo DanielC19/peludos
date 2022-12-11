@@ -14,7 +14,7 @@
                     @if ($presentation->id == $presentation_selected)
                     <button wire:click="selectPresentation({{ $presentation->id }})" class="product-amount button is-primary m-2">{{ $presentation->amount }}</button>
                     @else
-                    <button wire:click="selectPresentation({{ $presentation->id }})" class="product-amount button m-2">{{ $presentation->amount }}</button>
+                    <button {{ $presentation->availability ? "wire:click=selectPresentation($presentation->id)" : '' }} class="product-amount button m-2" {{ $presentation->availability ? '' : 'disabled' }}>{{ $presentation->amount }}</button>
                     @endif
                 @endforeach
             </div>

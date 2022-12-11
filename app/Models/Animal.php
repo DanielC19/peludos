@@ -24,6 +24,7 @@ class Animal extends Model
     {
         $products = Product::with('presentations')
                             ->where('animals.id', '=', $animal_id)
+                            ->where('availability', true)
                             ->select(['products.*'])
                             ->join('categories', 'products.category_id', '=', 'categories.id')
                             ->join('animals', 'categories.animal_id', '=', 'animals.id')

@@ -35,6 +35,7 @@ class Search extends Component
 
         return view('livewire.search', [
             'products' => Product::with('presentations')
+                                ->where('availability', true)
                                 ->where(
                                     'name',
                                     'LIKE',
