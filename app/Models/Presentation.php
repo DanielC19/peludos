@@ -42,6 +42,16 @@ class Presentation extends Model
             $this->availability = true;
         }
         $this->save();
+
+        $product = Product::find($this->product_id);
+        $presentations = $this->where('product_id', $this->product_id)->get();
+
+        foreach ($presentations as $presentation) {
+            if ($presentation->availability) {
+                return;
+            }
+        }
+        $product->toggleAvailability();
     }
 
     public function product()

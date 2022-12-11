@@ -37,6 +37,18 @@ class Product extends Model
 
     public function toggleAvailability()
     {
+        $is_available = false;
+        foreach ($this->presentations as $presentation) {
+            if ($presentation->availability) {
+                $is_available = true;
+            }
+        }
+        if (!$is_available) {
+            $this->availability = false;
+            $this->save();
+            return;
+        }
+
         if ($this->availability) {
             $this->availability = false;
         } else {
