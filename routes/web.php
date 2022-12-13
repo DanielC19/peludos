@@ -25,14 +25,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-// Overcharge logout route, it appears to be POST originally and it cannot be
-Route::get('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 
 /**
  * * USER ROUTES
  */
 Route::get('/',                     [HomeController::class, 'index'])->name('home');
-Route::get('/home',                 [HomeController::class, 'index'])->name('home');
+Route::get('/home',                 [HomeController::class, 'index']);
 Route::get('/animals',              [AnimalController::class, 'all'])->name('animals');
 Route::get('/animal/{animal}',      [AnimalController::class, 'index'])->name('animal');
 Route::get('/category/{category}',  [CategoryController::class, 'index'])->name('category');
