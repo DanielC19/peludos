@@ -17,7 +17,7 @@
     <script src="https://kit.fontawesome.com/c04f1e2916.js" crossorigin="anonymous"></script>
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('/build/assets/app.49060caf.css') }}">
 
     {{-- Livewire --}}
     @livewireStyles
@@ -41,6 +41,7 @@
 @livewireScripts
 
 {{-- PWA / Service worker scripts --}}
+<script src="{{ asset('/build/assets/app.b3decae5.js') }}"></script>
 <script src="{{ asset('/sw.js') }}"></script>
 <script>
     if (!navigator.serviceWorker.controller) {
