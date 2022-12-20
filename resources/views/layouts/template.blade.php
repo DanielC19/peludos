@@ -3,11 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="manifest" href="{{ asset('/manifest.json') }}">
-
+    <meta name="title" content="Peludos">
+    <meta name="description" content="Encuentra todo para tu mascota en un solo lugar. Llegamos hasta la comodidad de tu hogar.">
+    <meta name="keywords" content="mascotas, animales, perro, perros, gato, gatos, cuido, alimento, comida, salud, higiene, accesorios, juguetes, productos, tienda">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="Spanish">
+    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    
+    {{-- Manifest of PWA --}}
+    <link rel="manifest" href="{{ asset('/manifest.json') }}">
+    
     <title>Peludos | Todo para tu mascota</title>
     <link rel="shortcut icon" href="{{ asset('storage/images/perro.svg') }}" type="image/x-icon">
 
@@ -16,7 +24,7 @@
     {{-- Import FontAwesome --}}
     <script src="https://kit.fontawesome.com/c04f1e2916.js" crossorigin="anonymous"></script>
 
-    <!-- Scripts -->
+    <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('/build/assets/app.bd4110fb.css') }}">
 
     {{-- Livewire --}}
