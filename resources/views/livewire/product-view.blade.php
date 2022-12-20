@@ -4,7 +4,7 @@
     </div>
     <div class="product-layout">
         <figure class="image">
-            <img src="https://bulma.io/images/placeholders/1280x960.png" class="product-img" alt="Imagen del producto">
+            <img src="{{ asset('storage/'.$product->image) }}" class="product-img" alt="Imagen del producto">
         </figure>
         <div class="product-info">
             <p class="product-name">{{ $product->name }}</p>

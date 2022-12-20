@@ -17,7 +17,7 @@
     <script src="https://kit.fontawesome.com/c04f1e2916.js" crossorigin="anonymous"></script>
 
     <!-- Scripts -->
-    <link rel="stylesheet" href="{{ asset('/build/assets/app.49060caf.css') }}">
+    <link rel="stylesheet" href="{{ asset('/build/assets/app.0f7b472f.css') }}">
 
     {{-- Livewire --}}
     @livewireStyles
