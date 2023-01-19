@@ -64,6 +64,6 @@ class Product extends Model
     
     public function presentations()
     {
-        return $this->hasMany(Presentation::class);
+        return $this->hasMany(Presentation::class)->orderBy('amount');
     }
 }
