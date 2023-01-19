@@ -30,6 +30,9 @@ class Search extends Component
      */
     public function render()
     {
+        // Save current url for back button
+        session()->put('back_url', url()->current());
+        
         // Don't take into account white spaces
         $search = trim($this->search);
 

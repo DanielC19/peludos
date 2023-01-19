@@ -16,7 +16,9 @@ class CartController extends Controller
         if (session()->missing('cart')) {
             $products = [];
         }
-
+        // Save current url for back button
+        session()->put('back_url', url()->current());
+        
         return view('user.cart', compact('products'));
     }
 

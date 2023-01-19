@@ -10,6 +10,8 @@ class ProductView extends Component
 
     public function render()
     {
-        return view('livewire.product-view');
+        $cached_url = session()->get('back_url');
+
+        return view('livewire.product-view', compact('cached_url'));
     }
 }

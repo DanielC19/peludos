@@ -1,6 +1,6 @@
 <section class="section product-view">
     <div class="mb-4">
-        <a class="button is-primary is-rounded" href="{{ url()->previous() }}"><i class="fa-solid fa-chevron-left mr-4"></i> Atrás</a>
+        <a class="button is-primary is-rounded" href="{{ $cached_url }}"><i class="fa-solid fa-chevron-left mr-4"></i> Atrás</a>
     </div>
     <div class="product-layout">
         <figure class="image">
