@@ -37,7 +37,8 @@
                         </div>
                         <div class="form-group my-3">
                             <strong>Imagen:</strong>
-                            {{ $product->image }}
+                            <br>
+                            <img src="{{ asset('storage/'.$product->image) }}" alt="Imagen del producto" width="250px">
                         </div>
                         <div class="table-responsive form-group my-3">
                             <strong>Presentaciones:</strong>

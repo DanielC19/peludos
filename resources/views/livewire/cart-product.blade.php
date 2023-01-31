@@ -6,7 +6,7 @@
             </a>
         </span>
         <span>
-            <img src="https://bulma.io/images/placeholders/1280x960.png" class="product-img" alt="Placeholder image">
+            <img src="{{ asset('storage/'.$product->image) }}" class="product-img" alt="Imagen del producto">
         </span>
         <span class="info">
             <p>{{ $product->name }}</p>
