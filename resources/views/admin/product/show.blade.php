@@ -12,8 +12,11 @@
                         <a href="{{ route('products.index') }}" class="button is-primary mr-4">
                             Atrás
                         </a>
+                        <a class="button btn btn-primary mr-4" href="{{ route('products.edit',$product->id) }}">
+                            Editar producto
+                        </a>
                         <a href="{{ route('presentations.create', $product->id) }}" class="button is-secondary">
-                            Añadir
+                            Añadir presentación
                         </a>
                     </div>
                     @if ($message = Session::get('success'))
