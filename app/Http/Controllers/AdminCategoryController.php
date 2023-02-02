@@ -19,7 +19,7 @@ class AdminCategoryController extends AdminController
      */
     public function index()
     {
-        $categories = Category::paginate();
+        $categories = Category::with('animal')->paginate();
 
         return view('admin.category.index', compact('categories'))
             ->with('i', (request()->input('page', 1) - 1) * $categories->perPage());
