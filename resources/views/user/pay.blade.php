@@ -33,6 +33,12 @@
                 @endforeach
             </tbody>
         </table>
+        {{-- Shipment message --}}
+            <article class="message is-link my-5">
+                <div class="message-body has-text-centered">
+                    Si haces tu pedido antes del mediodía, es probable que tu pedido llegue el mismo día, de lo contrario llegará al día siguiente.
+                </div>
+            </article>
         <div class="my-5">
             <h3 class="mb-4">Información envío</h3> 
             {{-- Inputs for shipping --}}
