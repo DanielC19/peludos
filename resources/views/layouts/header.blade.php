@@ -95,7 +95,7 @@
     @else
     <div class="center w-100">
         @can('edit_settings')
-        <a href="{{ route('products.index') }}" class="navbar-item btn-animal mx-4">
+        <a href="{{ route('settings') }}" class="navbar-item btn-animal mx-4">
             ajustes
         </a>             
         @endcan

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\AdminOrderController;
 use App\Http\Controllers\AdminPresentationController;
 use App\Http\Controllers\AdminProductController;
+use App\Http\Controllers\AdminSettingController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
@@ -48,7 +49,8 @@ Route::get('/pay/confirm',          [PayController::class, 'confirm'])->name('pa
  */
 Route::prefix('admin')->group(function () {
     Route::group(['middleware' => ['can:edit_settings']], function () {
-        
+        Route::get('settings',          [AdminSettingController::class, 'index'])->name('settings');
+        Route::post('settings/update',  [AdminSettingController::class, 'update'])->name('settings.update');
     });
     
     Route::group(['middleware' => ['can:edit_products']], function () {
