@@ -26,6 +26,7 @@ class Order extends Model
         'email',
         'cellphone',
         'address',
+        'delivered',
     ];
 
     /**

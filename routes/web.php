@@ -68,7 +68,8 @@ Route::prefix('admin')->group(function () {
     });
     
     Route::group(['middleware' => ['can:view_orders']], function () {
-        Route::get('orders',            [AdminOrderController::class, 'index'])->name('orders');
-        Route::get('orders/show/{id}',  [AdminOrderController::class, 'show'])->name('orders.show');
+        Route::get('orders',                [AdminOrderController::class, 'index'])->name('orders');
+        Route::get('orders/show/{id}',      [AdminOrderController::class, 'show'])->name('orders.show');
+        Route::get('orders/deliver/{id}',   [AdminOrderController::class, 'deliver'])->name('orders.deliver');
     });
 });

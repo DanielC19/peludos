@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->bigInteger('cellphone')->nullable();
             $table->string('address')->nullable();
+            $table->boolean('delivered')->default(0);
             $table->timestamps();
         });
     }

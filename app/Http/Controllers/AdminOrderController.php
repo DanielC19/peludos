@@ -48,4 +48,19 @@ class AdminOrderController extends AdminController
 
         return view('admin.orders.show', compact('order'))->with('i');
     }
+
+    public function deliver($id)
+    {
+        $order = Order::find($id);
+        $order->delivered = !$order->delivered;
+        $order->save();
+        
+        if ($order->delivered) {
+            return redirect()->route('orders')
+                ->with('success', 'Pedido marcado como entregado');            
+        } else {
+            return redirect()->route('orders')
+                ->with('danger', 'Pedido marcado como no entregado');            
+        }
+    }
 }

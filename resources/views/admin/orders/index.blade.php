@@ -15,6 +15,11 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
+                    @if ($message = Session::get('danger'))
+                        <div class="alert alert-danger">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
 
                     <div class="card-body">
                         <div class="table-responsive">
@@ -41,6 +46,11 @@
 											<td>{{ $order->created_at }}</td>
                                             <td>
                                                 <a class="button btn btn-sm is-primary" href="{{ route('orders.show', $order->id) }}"><i class="fa-solid fa-magnifying-glass"></i> Detalle</a>
+                                                @if ($order->delivered)
+                                                <a class="button btn btn-sm is-secondary" href="{{ route('orders.deliver',$order->id) }}"><i class="fa-solid fa-check-to-slot"></i> Entregado</a>                                                    
+                                                @else
+                                                <a class="button btn btn-sm btn-danger" href="{{ route('orders.deliver',$order->id) }}"><i class="fa-solid fa-rectangle-xmark"></i> Sin entregar</a>
+                                                @endif                                            
                                             </td>
                                         </tr>
                                     @endforeach
