@@ -31,6 +31,11 @@
                         <td>${{ number_format($product->price, 0, '.', ',') }}</td>
                     </tr>
                 @endforeach
+                <tr>
+                    <td>Envío</td>
+                    <td></td>
+                    <td>${{ number_format($shipment, 0, '.', ',') }}</td>
+                </tr>
             </tbody>
         </table>
         {{-- Shipment message --}}

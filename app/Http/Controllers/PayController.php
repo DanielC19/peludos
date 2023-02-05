@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -33,6 +34,10 @@ class PayController extends Controller
             $total_amount += $product->amount;
         }
 
+        // Get shipment cost and add it to total
+        $shipment = Setting::find(1)->shipment;
+        $total_price += $shipment;
+
         // PayU Variables
         $reference_code = Order::generateReferenceCode($products);
         $account_id = Config::get('services.payu.account_id');
@@ -48,7 +53,7 @@ class PayController extends Controller
             'response_url' => route('pay.confirm'),
         ];
 
-        return view('user.pay', compact('products', 'user', 'total_price', 'total_amount', 'payU'));
+        return view('user.pay', compact('products', 'user', 'total_price', 'total_amount', 'payU', 'shipment'));
     }
 
     /**
