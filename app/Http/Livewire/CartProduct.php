@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Setting;
 use Livewire\Component;
 
 class CartProduct extends Component
@@ -17,14 +18,15 @@ class CartProduct extends Component
     public function mount()
     {
         // Sets initial values for price and selected presentation
-        $this->price = $this->product->presentation->price;
+        $rise = Setting::find(1)->rise;
+        $this->price = round($this->product->presentation->price + ($this->product->presentation->price * ($rise / 100)), -2, PHP_ROUND_HALF_UP);
         $this->presentation = $this->product->presentation;
 
         // If there's already a change on the amount of products
         // takes it and updates price
         if (isset($this->product->amount)) {
             $this->amount = $this->product->amount;
-            $this->price = $this->product->presentation->price * $this->amount;
+            $this->price = round($this->product->presentation->price + ($this->product->presentation->price * ($rise / 100)), -2, PHP_ROUND_HALF_UP) * $this->amount;
         } else {
             $this->amount = 1;    
         }

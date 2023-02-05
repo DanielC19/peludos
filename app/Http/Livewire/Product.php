@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Presentation;
+use App\Models\Setting;
 
 trait Product 
 {
@@ -17,10 +18,11 @@ trait Product
      */
     public function mount()
     {
+        $rise = Setting::find(1)->rise;
         foreach ($this->product->presentations as $presentation) {
             if ($presentation->availability) {
                 $this->presentation_selected = $presentation->id;
-                $this->price = $presentation->price;
+                $this->price = round($presentation->price + ($presentation->price * ($rise/100)), -2, PHP_ROUND_HALF_UP);
                 break;
             }
         }
@@ -40,8 +42,9 @@ trait Product
      */
     public function selectPresentation($presentation_id)
     {
+        $rise = Setting::find(1)->rise;
         $this->presentation_selected = $presentation_id;
-        $this->price = Presentation::find($presentation_id)->price;
+        $this->price = round(Presentation::find($presentation_id)->price + (Presentation::find($presentation_id)->price * ($rise / 100)), -2, PHP_ROUND_HALF_UP);
 
         // If product is on cart, change cart button msg
         if (session()->has('cart')) {
