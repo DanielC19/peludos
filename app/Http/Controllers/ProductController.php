@@ -10,8 +10,16 @@ class ProductController extends Controller
     public function index($product_id)
     {
         $product = Product::find($product_id);
+        // Sets variable to don't try to paginate products in home view
+        $home_view = true;
 
-        return view('user.product', compact('product'));
+        $products = Product::with('presentations')
+                    ->where('category_id', $product->category_id)
+                    ->inRandomOrder()
+                    ->limit(6)
+                    ->get();
+
+        return view('user.product', compact('product', 'home_view', 'products'));
     }
 
     public function search(Request $request)
