@@ -9,6 +9,10 @@
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="Spanish">
+  
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
     
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
