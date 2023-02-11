@@ -4,7 +4,7 @@
 {{-- Banner promocional --}}
 <section class="slide-container">
     <div class="item-slide">
-        <img src="{{ asset("storage/images/img1.jpg") }}" alt="Banner promocional principal">
+        <img src="{{ asset("storage/images/banner.png") }}" alt="Banner promocional principal">
     </div>            
 </section>
 
