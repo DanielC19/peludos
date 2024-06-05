@@ -19,11 +19,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'id',
         'name',
         'email',
         'password',
         'cellphone',
         'address',
+        'referred',
     ];
 
     /**
@@ -35,4 +37,17 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    static public function generateId() : int
+    {
+        $number = mt_rand(100000, 999999);
+
+        // call the same function if the id exists already
+        if (User::whereId($number)->exists()) {
+            return User::generateId();
+        }
+
+        // return id
+        return $number;
+    }
 }

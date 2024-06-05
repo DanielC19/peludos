@@ -12,7 +12,10 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">Nombre</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end">
+                                Nombre
+                                <span class="text-danger font-weight-bold">*</span>
+                            </label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
@@ -26,7 +29,10 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">
+                                Email
+                                <span class="text-danger font-weight-bold">*</span>
+                            </label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -40,7 +46,10 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">Contraseña</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-end">
+                                Contraseña
+                                <span class="text-danger font-weight-bold">*</span>
+                            </label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
@@ -54,10 +63,27 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">Confirma contraseña</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">
+                                Confirma contraseña
+                                <span class="text-danger font-weight-bold">*</span>
+                            </label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="referred" class="col-md-4 col-form-label text-md-end">Código referido (si lo tienes)</label>
+
+                            <div class="col-md-6">
+                                <input id="referred" type="number" min="100000" max="999999" class="form-control @error('referred') is-invalid @enderror" name="referred" value="{{ old('referred') }}" autocomplete="referred">
+
+                                @error('referred')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
