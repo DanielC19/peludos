@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdminCategoryController;
-use App\Http\Controllers\AdminOrderController;
-use App\Http\Controllers\AdminPresentationController;
-use App\Http\Controllers\AdminProductController;
-use App\Http\Controllers\AdminSettingController;
+use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminOrderController;
+use App\Http\Controllers\Admin\AdminPresentationController;
+use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminSettingController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
@@ -52,7 +52,7 @@ Route::prefix('admin')->group(function () {
         Route::get('settings',          [AdminSettingController::class, 'index'])->name('settings');
         Route::post('settings/update',  [AdminSettingController::class, 'update'])->name('settings.update');
     });
-    
+
     Route::group(['middleware' => ['can:edit_products']], function () {
         // Products
         Route::resource('products', AdminProductController::class);
@@ -66,7 +66,7 @@ Route::prefix('admin')->group(function () {
         // Categories
         Route::resource('categories', AdminCategoryController::class);
     });
-    
+
     Route::group(['middleware' => ['can:view_orders']], function () {
         Route::get('orders',                [AdminOrderController::class, 'index'])->name('orders');
         Route::get('orders/show/{id}',      [AdminOrderController::class, 'show'])->name('orders.show');

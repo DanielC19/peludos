@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -26,7 +26,7 @@ class AdminOrderController extends AdminController
                 $order->status = 'Expirado';
             }
             return $order;
-        });                        
+        });
 
         return view('admin.orders.index', compact('orders'))->with('i');
     }
@@ -54,13 +54,13 @@ class AdminOrderController extends AdminController
         $order = Order::find($id);
         $order->delivered = !$order->delivered;
         $order->save();
-        
+
         if ($order->delivered) {
             return redirect()->route('orders')
-                ->with('success', 'Pedido marcado como entregado');            
+                ->with('success', 'Pedido marcado como entregado');
         } else {
             return redirect()->route('orders')
-                ->with('danger', 'Pedido marcado como no entregado');            
+                ->with('danger', 'Pedido marcado como no entregado');
         }
     }
 }
