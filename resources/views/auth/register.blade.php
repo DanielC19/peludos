@@ -78,13 +78,16 @@
 
                             <div class="col-md-6">
                                 <input id="referred" type="number" min="100000" max="999999" class="form-control @error('referred') is-invalid @enderror" name="referred" value="{{ old('referred') }}" autocomplete="referred">
-
-                                @error('referred')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
+                        </div>
+
+                        <div class="mb-3 center">
+                            {!! htmlFormSnippet() !!}
+                            @error('g-recaptcha-response')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="row mb-0">

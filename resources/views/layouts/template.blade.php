@@ -29,6 +29,9 @@
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
+    {{-- ReCaptcha --}}
+    {!! htmlScriptTagJsApi() !!}
+
     {{-- Livewire --}}
     @livewireStyles
 </head>
