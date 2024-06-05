@@ -30,14 +30,14 @@
                     <a href="{{ route('products.index') }}">Vista Admin</a>
                     @endif
                 </div>
-            </div>                
+            </div>
             @else
             <div class="navbar-item mr-5">
                 <div class="buttons">
                     <span>escríbenos</span>
                     <i class="fa-brands fa-whatsapp fa-large ml-2"></i>
                 </div>
-            </div>    
+            </div>
             @endcan
             <div class="navbar-item mr-5">
                 <a href="{{ route('cart') }}" class="buttons">
@@ -61,11 +61,17 @@
             @auth
             <div class="navbar-item">
                 <div class="buttons">
-                    <a href="{{ route('logout') }}">
-                        Cerrar sesión
+                    <a
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        {{ __('Cerrar sesión') }}
                     </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
-            </div>                        
+            </div>
             @endauth
         </div>
     </div>
@@ -78,7 +84,7 @@
         <a href="{{ route('animal', $animal_header->name) }}" class="navbar-item btn-animal">
             <img src="{{ asset("storage/images/$animal_header->image") }}" alt="Logo {{ $animal_header->name }}">
             {{ strtolower($animal_header->name) }}
-        </a>            
+        </a>
         @endforeach
     </div>
     <div class="navbar-end">
@@ -97,22 +103,21 @@
         @can('edit_settings')
         <a href="{{ route('settings') }}" class="navbar-item btn-animal mx-4">
             ajustes
-        </a>             
+        </a>
         @endcan
         @can('edit_products')
         <a href="{{ route('products.index') }}" class="navbar-item btn-animal mx-4">
             productos
-        </a> 
+        </a>
         <a href="{{ route('categories.index') }}" class="navbar-item btn-animal mx-4">
             categorías
-        </a> 
+        </a>
         @endcan
         @can('view_orders')
         <a href="{{ route('orders') }}" class="navbar-item btn-animal mx-4">
             pedidos
-        </a>             
+        </a>
         @endcan
     </div>
     @endif
 </nav>
-    
