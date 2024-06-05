@@ -104,6 +104,9 @@
         <a href="{{ route('settings') }}" class="navbar-item btn-animal mx-4">
             ajustes
         </a>
+        <a href="{{ route('users') }}" class="navbar-item btn-animal mx-4">
+            usuarios
+        </a>
         @endcan
         @can('edit_products')
         <a href="{{ route('products.index') }}" class="navbar-item btn-animal mx-4">

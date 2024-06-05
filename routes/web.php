@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminPresentationController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminSettingController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\AnimalController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
@@ -51,6 +52,8 @@ Route::prefix('admin')->group(function () {
     Route::group(['middleware' => ['can:edit_settings']], function () {
         Route::get('settings',          [AdminSettingController::class, 'index'])->name('settings');
         Route::post('settings/update',  [AdminSettingController::class, 'update'])->name('settings.update');
+        // Users
+        Route::get('users',             [AdminUserController::class, 'index'])->name('users');
     });
 
     Route::group(['middleware' => ['can:edit_products']], function () {
