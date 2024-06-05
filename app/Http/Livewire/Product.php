@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Presentation;
 use App\Models\Setting;
 
-trait Product 
+trait Product
 {
     public $product;
     public $presentation_selected;
@@ -38,7 +38,7 @@ trait Product
     }
 
     /**
-     * * Highlight a given presentation button 
+     * * Highlight a given presentation button
      */
     public function selectPresentation($presentation_id)
     {
@@ -53,7 +53,7 @@ trait Product
                     $this->cart_msg = "¡Añadido al carrito!";
                     break;
                 } else {
-                    $this->cart_msg = "Añadir al carrito";                    
+                    $this->cart_msg = "Añadir al carrito";
                 }
             }
         }
@@ -82,7 +82,7 @@ trait Product
                 $add_product = false;
             }
         }
-        
+
         if ($add_product) {
             // Assign selected presentation to product
             foreach ($this->product->presentations as $presentation) {

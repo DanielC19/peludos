@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('CACHE_DRIVER', 'none'),
+    'default' => env('CACHE_DRIVER', 'file'),
 
     /*
     |--------------------------------------------------------------------------
@@ -32,11 +32,6 @@ return [
     */
 
     'stores' => [
-
-        // Not cached
-        'none' => [
-            'driver' => 'null',
-        ],
 
         'apc' => [
             'driver' => 'apc',

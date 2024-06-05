@@ -28,7 +28,7 @@ class CartProduct extends Component
             $this->amount = $this->product->amount;
             $this->price = round($this->product->presentation->price + ($this->product->presentation->price * ($rise / 100)), -2, PHP_ROUND_HALF_UP) * $this->amount;
         } else {
-            $this->amount = 1;    
+            $this->amount = 1;
         }
     }
 
@@ -46,8 +46,9 @@ class CartProduct extends Component
      */
     public function increment()
     {
+        $rise = Setting::find(1)->rise;
         $this->amount++;
-        $this->price = $this->presentation->price * $this->amount;
+        $this->price = round($this->presentation->price + ($this->presentation->price * ($rise / 100)), -2, PHP_ROUND_HALF_UP) * $this->amount;
 
         // Updates value on session
         $products = [];
@@ -66,12 +67,13 @@ class CartProduct extends Component
      */
     public function reduce()
     {
+        $rise = Setting::find(1)->rise;
         $this->amount--;
         // Check it's not zero
         if ($this->amount == 0) {
             $this->amount = 1;
         }
-        $this->price = $this->presentation->price * $this->amount;
+        $this->price = round($this->presentation->price + ($this->presentation->price * ($rise / 100)), -2, PHP_ROUND_HALF_UP) * $this->amount;
 
         // Updates value on session
         $products = [];
