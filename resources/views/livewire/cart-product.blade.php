@@ -1,17 +1,17 @@
 <article>
     <div class="shopping-cart__info">
-        <span class="modify">
+        <span class="modify is-desktop">
             <a href="{{ route('product', $product->id) }}">
                 <i class="fa-solid fa-eye fa-xl"></i> Ver más
             </a>
         </span>
-        <span>
+        <a href="{{ route('product', $product->id) }}">
             <img src="{{ asset('storage/'.$product->image) }}" class="product-img" alt="Imagen del producto">
-        </span>
-        <span class="info">
+        </a>
+        <a href="{{ route('product', $product->id) }}" class="info">
             <p>{{ $product->name }}</p>
             <p class="caption">Presentación: {{ $presentation->amount }}</p>
-        </span>
+        </a>
         <div class="is-desktop">
             <span class="is-flex is-align-items-center">
                 <button class="button mr-3" wire:click="increment">+</button>
