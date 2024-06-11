@@ -33,10 +33,10 @@
             </div>
             @else
             <div class="navbar-item mr-5">
-                <div class="buttons">
+                <a href="https://wa.me/3053999209" target="_blank" class="buttons">
                     <span>escríbenos</span>
                     <i class="fa-brands fa-whatsapp fa-large ml-2"></i>
-                </div>
+                </a>
             </div>
             @endcan
             <div class="navbar-item mr-5">
