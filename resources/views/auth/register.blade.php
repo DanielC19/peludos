@@ -46,6 +46,23 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="cellphone" class="col-md-4 col-form-label text-md-end">
+                                Celular (solo Colombia +57)
+                                <span class="text-danger font-weight-bold">*</span>
+                            </label>
+
+                            <div class="col-md-6">
+                                <input id="cellphone" type="number" min="1000000000" max="3999999999" class="form-control @error('cellphone') is-invalid @enderror" name="cellphone" value="{{ old('cellphone') }}" required autocomplete="cellphone">
+
+                                @error('cellphone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">
                                 Contraseña
                                 <span class="text-danger font-weight-bold">*</span>

@@ -56,6 +56,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'cellphone' => ['required', 'integer', 'max:3999999999'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'g-recaptcha-response' => ['recaptcha']
         ]);
@@ -73,6 +74,7 @@ class RegisterController extends Controller
             'id' => User::generateId(),
             'name' => $data['name'],
             'email' => $data['email'],
+            'cellphone' => $data['cellphone'],
             'password' => Hash::make($data['password']),
             'referred' => $data['referred'],
         ]);
