@@ -39,6 +39,14 @@
                             {{ $product->name }}
                         </div>
                         <div class="form-group my-3">
+                            <strong>Destacado:</strong>
+                            @if ($product->highlight)
+                                Sí
+                            @else
+                                No
+                            @endif
+                        </div>
+                        <div class="form-group my-3">
                             <strong>Imagen:</strong>
                             <br>
                             <img src="{{ asset('storage/'.$product->image) }}" alt="Imagen del producto" width="250px">

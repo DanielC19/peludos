@@ -20,7 +20,7 @@ class Product extends Model
      *
      * @var array
      */
-    protected $fillable = ['id', 'category_id','name','image', 'availability'];
+    protected $fillable = ['id', 'category_id','name','image', 'availability', 'highlight'];
 
     static public function generateId() : int
     {

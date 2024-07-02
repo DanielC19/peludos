@@ -24,7 +24,7 @@
                 <div class="select">
                     <select name="category_id" wire:model="category_id">
                         @foreach ($categories as $category)
-                        @if ($category_id == $category->id)
+                            @if ($category_id == $category->id)
                                 <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                             @else
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -54,6 +54,22 @@
                         </span>
                     </span>
                 </label>
+            </div>
+        </div>
+        <div class="field mb-3">
+            <label for="highlight" class="label">Destacar producto</label>
+            <div class="control">
+                <div class="select">
+                    <select name="highlight" wire:model="highlight">
+                        @if ($highlight)
+                            <option value="0">No</option>
+                            <option value="1" selected>Sí</option>
+                        @else
+                            <option value="0" selected>No</option>
+                            <option value="1">Sí</option>
+                        @endif
+                    </select>
+                </div>
             </div>
         </div>
 

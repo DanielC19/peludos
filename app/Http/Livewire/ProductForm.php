@@ -17,6 +17,7 @@ class ProductForm extends Component
     public $category_id;
     public $name;
     public $image;
+    public $highlight;
     public $submit = false;
 
     protected $rules = [
@@ -24,6 +25,7 @@ class ProductForm extends Component
         'category_id' => 'required',
         'name' => 'required',
         'image' => 'required|image',
+        'highlight' => 'required',
     ];
 
     public function mount()
@@ -32,12 +34,13 @@ class ProductForm extends Component
             $this->animal_id = $this->product->category->animal->id;
             $this->category_id = $this->product->category->id;
             $this->name = $this->product->name;
+            $this->highlight = $this->product->highlight;
             $this->image = $this->product->image;
             $this->categories = Category::where('animal_id', $this->animal_id)->get();
             $this->check();
         } else {
             $this->animal_id = $this->animals->first()->id;
-            $this->animalUpdate();            
+            $this->animalUpdate();
         }
     }
 

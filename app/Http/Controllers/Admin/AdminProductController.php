@@ -61,6 +61,7 @@ class AdminProductController extends AdminController
             'name' => $request->name,
             'image' => $image,
             'availability' => true,
+            'highlight' => $request->highlight,
         ]);
 
         return redirect()->route('products.index')
