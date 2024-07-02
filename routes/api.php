@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('upload/image', [ApiController::class, 'uploadImage']);
+Route::post('upload/product', [ApiController::class, 'uploadProduct']);
