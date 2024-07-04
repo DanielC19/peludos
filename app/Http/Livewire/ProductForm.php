@@ -24,7 +24,6 @@ class ProductForm extends Component
         'animal_id' => 'required',
         'category_id' => 'required',
         'name' => 'required',
-        'image' => 'required|image',
         'highlight' => 'required',
     ];
 

@@ -6,11 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    
+
     static $rules = [
 		'category_id' => 'required',
 		'name' => 'required',
-		'image' => 'required',
     ];
 
     protected $perPage = 20;

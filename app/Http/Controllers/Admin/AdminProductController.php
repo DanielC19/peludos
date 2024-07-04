@@ -106,16 +106,21 @@ class AdminProductController extends AdminController
     {
         request()->validate(Product::$rules);
 
-        File::delete("storage/$product->image");
-
-        $timestamp = Carbon::now()->timestamp;
-        $filename = "product_$timestamp.jpg";
-        $image = $request->image->storeAs('uploads', $filename, 'public');
+        if ($request->image) {
+            File::delete("storage/$product->image");
+    
+            $timestamp = Carbon::now()->timestamp;
+            $filename = "product_$timestamp.jpg";
+            $image = $request->image->storeAs('uploads', $filename, 'public');
+        } else {
+            $image = $product->image;
+        }
 
         $product->update([
             'category_id' => $request->category_id,
             'name' => $request->name,
             'image' => $image,
+            'highlight' => $request->highlight,
         ]);
 
         return redirect()->route('products.index')
