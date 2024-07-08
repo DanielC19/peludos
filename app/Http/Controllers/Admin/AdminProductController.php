@@ -53,7 +53,9 @@ class AdminProductController extends AdminController
 
         $timestamp = Carbon::now()->timestamp;
         $filename = "product_$timestamp.jpg";
-        $image = $request->image->storeAs('uploads', $filename, 'public');
+        $request->image->move(base_path('storage/uploads'), $filename);
+
+        $image = "uploads/$filename";
 
         Product::create([
             'id' => $id,
@@ -107,12 +109,14 @@ class AdminProductController extends AdminController
         request()->validate(Product::$rules);
 
         if ($request->image) {
-            File::delete("storage/$product->image");
-    
+            File::delete(base_path("storage/$product->image"));
+
             $timestamp = Carbon::now()->timestamp;
             $filename = "product_$timestamp.jpg";
-            $image = $request->image->storeAs('uploads', $filename, 'public');
-        } else {
+            $request->image->move(base_path('storage/uploads'), $filename);
+
+            $image = "uploads/$filename";
+            } else {
             $image = $product->image;
         }
 
