@@ -21,6 +21,8 @@ class AdminSettingController extends AdminController
         $settings = Setting::find(1);
         $settings->shipment = $shipment;
         $settings->rise = $request->rise;
+        $settings->rise_not_logged = $request->rise_not_logged;
+        $settings->balance = $request->balance;
         $settings->save();
 
         return redirect()->route('settings')

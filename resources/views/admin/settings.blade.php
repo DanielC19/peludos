@@ -21,7 +21,7 @@
                             <div class="box box-info padding-1">
                                 <div class="box-body">
                                     <div class="field mb-3">
-                                        <label for="shipment" class="label">Envío</label>
+                                        <label for="shipment" class="label">Costo Envío ($)</label>
                                         <div class="control">
                                             <input type="text" name="shipment" id="price-input" class="input" value="${{ number_format($settings->shipment, 0, '.', ',') }}">
                                         </div>
@@ -30,6 +30,18 @@
                                         <label for="rise" class="label">Aumento por producto (%)</label>
                                         <div class="control">
                                             <input type="number" name="rise" class="input" value="{{ $settings->rise }}">
+                                        </div>
+                                    </div>
+                                    <div class="field mb-3">
+                                        <label for="rise_not_logged" class="label">Aumento por producto (%) no referidos</label>
+                                        <div class="control">
+                                            <input type="number" name="rise_not_logged" class="input" value="{{ $settings->rise_not_logged }}">
+                                        </div>
+                                    </div>
+                                    <div class="field mb-3">
+                                        <label for="balance" class="label">Porcentage comisión referido (%)</label>
+                                        <div class="control">
+                                            <input type="number" name="balance" class="input" value="{{ $settings->balance }}">
                                         </div>
                                     </div>
                                 </div>

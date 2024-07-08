@@ -9,6 +9,8 @@ class Setting extends Model
     static $rules = [
         'shipment' => 'required',
         'rise' => 'required',
+        'rise_not_logged' => 'required',
+        'balance' => 'required',
     ];
 
     /**
@@ -16,5 +18,5 @@ class Setting extends Model
      *
      * @var array
      */
-    protected $fillable = ['shipment', 'rise'];
+    protected $fillable = ['shipment', 'rise', 'rise_not_logged', 'balance'];
 }
