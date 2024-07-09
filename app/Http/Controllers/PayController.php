@@ -82,13 +82,17 @@ class PayController extends Controller
         $user = User::where('email', $request->email_buyer)->first();
         if ($user !== null) {
             $order->user_id = $user->id;
-            $user->cellphone = $request->phone;                
-            $user->address = $request->shipping_address;                
+            $user->cellphone = $request->phone;
+            $user->address = $request->shipping_address;
+            if ($user->referred) {
+                $referred_user = User::find($user->referred);
+                $referred_user->balance += ($order->value * (Setting::find(1)->balance / 100));
+            }
             $user->save();
         }
         // Save order with all data
         $order->save();
-        
+
         return true;
     }
 
