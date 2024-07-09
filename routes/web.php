@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\Admin\AdminPresentationController;
@@ -32,6 +33,8 @@ Auth::routes();
  * * USER ROUTES
  */
 Route::get('/',                     [HomeController::class, 'index'])->name('home');
+Route::get('/account',              [AccountController::class, 'index'])->middleware('auth')->name('account');
+Route::post('/account',             [AccountController::class, 'update'])->middleware('auth')->name('account.update');
 Route::get('/home',                 [HomeController::class, 'index']);
 Route::get('/animals',              [AnimalController::class, 'all'])->name('animals');
 Route::get('/animal/{animal}',      [AnimalController::class, 'index'])->name('animal');

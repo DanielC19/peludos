@@ -61,10 +61,15 @@
             @auth
             <div class="navbar-item">
                 <div class="buttons">
+                    <a href="{{ route('account') }}">mi cuenta</a>
+                </div>
+            </div>
+            <div class="navbar-item">
+                <div class="buttons">
                     <a
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
-                        {{ __('Cerrar sesión') }}
+                        {{ __('cerrar sesión') }}
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
