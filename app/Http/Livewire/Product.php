@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Presentation;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Auth;
 
 trait Product
 {
@@ -12,13 +13,22 @@ trait Product
     public $price;
     public $cart_msg = "Añadir al carrito";
 
+    private function determineRise() {
+        if (Auth::user()) {
+            if (Auth::user()->referred !== null) {
+                return Setting::find(1)->rise;
+            }
+        }
+        return Setting::find(1)->rise_not_logged;
+    }
+
     /**
      * * Acts like constructor
      * Sets initial values for price and selected presentation
      */
     public function mount()
     {
-        $rise = Setting::find(1)->rise;
+        $rise = $this->determineRise();
         foreach ($this->product->presentations as $presentation) {
             if ($presentation->availability) {
                 $this->presentation_selected = $presentation->id;
@@ -42,7 +52,7 @@ trait Product
      */
     public function selectPresentation($presentation_id)
     {
-        $rise = Setting::find(1)->rise;
+        $rise = $this->determineRise();
         $this->presentation_selected = $presentation_id;
         $this->price = round(Presentation::find($presentation_id)->price + (Presentation::find($presentation_id)->price * ($rise / 100)), -2, PHP_ROUND_HALF_UP);
 

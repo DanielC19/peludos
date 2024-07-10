@@ -28,7 +28,17 @@ class PayController extends Controller
         // Add all items and its price
         $total_price = 0;
         $total_amount = 0;
-        $rise = Setting::find(1)->rise;
+
+        function determineRise() {
+            if (Auth::user()) {
+                if (Auth::user()->referred !== null) {
+                    return Setting::find(1)->rise;
+                }
+            }
+            return Setting::find(1)->rise_not_logged;
+        }
+        $rise = determineRise();
+
         foreach ($products as $product) {
             $product->price = round($product->presentation->price + ($product->presentation->price * ($rise / 100)), -2, PHP_ROUND_HALF_UP) * $product->amount;
             $total_price += $product->price;

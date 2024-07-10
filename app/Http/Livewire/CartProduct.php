@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Setting;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class CartProduct extends Component
@@ -12,13 +13,22 @@ class CartProduct extends Component
     public $price;
     public $presentation;
 
+    private function determineRise() {
+        if (Auth::user()) {
+            if (Auth::user()->referred !== null) {
+                return Setting::find(1)->rise;
+            }
+        }
+        return Setting::find(1)->rise_not_logged;
+    }
+
     /**
      * * Acts like constructor
      */
     public function mount()
     {
         // Sets initial values for price and selected presentation
-        $rise = Setting::find(1)->rise;
+        $rise = $this->determineRise();
         $this->price = round($this->product->presentation->price + ($this->product->presentation->price * ($rise / 100)), -2, PHP_ROUND_HALF_UP);
         $this->presentation = $this->product->presentation;
 
@@ -46,7 +56,7 @@ class CartProduct extends Component
      */
     public function increment()
     {
-        $rise = Setting::find(1)->rise;
+        $rise = $this->determineRise();
         $this->amount++;
         $this->price = round($this->presentation->price + ($this->presentation->price * ($rise / 100)), -2, PHP_ROUND_HALF_UP) * $this->amount;
 
@@ -67,7 +77,7 @@ class CartProduct extends Component
      */
     public function reduce()
     {
-        $rise = Setting::find(1)->rise;
+        $rise = $this->determineRise();
         $this->amount--;
         // Check it's not zero
         if ($this->amount == 0) {
