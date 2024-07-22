@@ -3,6 +3,7 @@
     "short_name": "peludos",
     "start_url": ".",
     "background_color": "#ffffff",
+    "theme_color": "#ffffff",
     "description": "Todo para tu mascota",
     "display": "standalone",
     "icons": [
