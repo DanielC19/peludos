@@ -21,7 +21,7 @@
                     <div class="card-body px-6">
                         
                         <div class="form-group my-3">
-                            <strong>ID (Código refencia PayU):</strong>
+                            <strong>ID (Código refencia Wompi):</strong>
                             {{ $order->id }}
                         </div>
                         <div class="form-group my-3">
@@ -37,11 +37,11 @@
                             ${{ number_format($order->tax, 2, '.', ',') }}
                         </div>
                         <div class="form-group my-3">
-                            <strong>ID Transacción PayU:</strong>
+                            <strong>ID Transacción Wompi:</strong>
                             {{ $order->transaction_id }}
                         </div>
                         <div class="form-group my-3">
-                            <strong>Fecha Transacción PayU:</strong>
+                            <strong>Fecha Transacción Wompi:</strong>
                             {{ $order->transaction_date }}
                         </div>
                         <div class="form-group my-3">

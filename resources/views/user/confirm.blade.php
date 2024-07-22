@@ -30,6 +30,11 @@
                     <td>${{ number_format($product->price, 0, '.', ',') }}</td>
                 </tr>
             @endforeach
+            <tr>
+                <td>Envío</td>
+                <td></td>
+                <td>${{ number_format($shipping, 0, '.', ',') }}</td>
+            </tr>
         </tbody>
     </table>
     <h3 class="mt-5 mb-4">Info envío</h3>

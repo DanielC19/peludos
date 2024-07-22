@@ -20,10 +20,10 @@ class AdminOrderController extends AdminController
                 $order->status = 'Cancelado';
             } elseif ($order->state == Order::PENDING) {
                 $order->status = 'Pendiente';
-            } elseif ($order->state == Order::ERROR) {
-                $order->status = 'Error';
             } elseif ($order->state == Order::EXPIRED) {
                 $order->status = 'Expirado';
+            } else {
+                $order->status = 'Error';
             }
             return $order;
         });

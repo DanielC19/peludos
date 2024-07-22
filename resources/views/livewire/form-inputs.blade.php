@@ -2,7 +2,7 @@
     <div class="field">
         <label class="label">Nombre</label>
         <div class="control has-icons-left has-icons-right">
-            <input name="buyerFullName" wire:model="name" type="text" placeholder="Ingresa tu nombre" class="input" maxlength="250">
+            <input name="customer-data:full-name" wire:model="name" type="text" placeholder="Ingresa tu nombre" class="input" maxlength="250">
             <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
             </span>
@@ -12,7 +12,7 @@
     <div class="field">
         <label class="label">Email</label>
         <div class="control has-icons-left has-icons-right">
-            <input name="buyerEmail" wire:model="email" type="email" placeholder="Ingresa tu email" class="input" maxlength="250">
+            <input name="customer-data:email" wire:model="email" type="email" placeholder="Ingresa tu email" class="input" maxlength="250">
             <span class="icon is-small is-left">
                 <i class="fa-solid fa-envelope"></i>
             </span>
@@ -22,7 +22,7 @@
     <div class="field">
         <label class="label">Celular</label>
         <div class="control has-icons-left has-icons-right">
-            <input name="mobilePhone" wire:model="cellphone" type="number" placeholder="Ingresa tu celular" class="input">
+            <input name="shipping-address:phone-number" wire:model="cellphone" type="number" placeholder="Ingresa tu celular" class="input">
             <span class="icon is-small is-left">
                 <i class="fa-solid fa-phone"></i>
             </span>
@@ -41,7 +41,7 @@
     <div class="field">
         <label class="label">Dirección</label>
         <div class="control has-icons-left has-icons-right">
-            <input name="shippingAddress" wire:model="address" type="text" placeholder="Ingresa tu dirección" class="input" maxlength="250">
+            <input name="shipping-address:address-line-1" wire:model="address" type="text" placeholder="Ingresa tu dirección" class="input" maxlength="250">
             <span class="icon is-small is-left">
                 <i class="fa-solid fa-location-dot"></i>
             </span>

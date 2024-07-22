@@ -30,14 +30,14 @@ class Order extends Model
     ];
 
     /**
-     * Values that "state_pol" field returns from PayU
+     * Values that "state_pol" field returns from Wompi
      * Used to know what it means on DB
      */
-    CONST APPROVED = 4;
-    CONST EXPIRED = 5;
-    CONST DECLINED = 6;
-    CONST PENDING = 7;
-    CONST ERROR = 104;
+    CONST APPROVED = 'APPROVED';
+    CONST EXPIRED = 'EXPIRED';
+    CONST DECLINED = 'DECLINED';
+    CONST PENDING = 'PENDING';
+    CONST ERROR = 'ERROR';
     
     /**
      * Generates random and unique reference code,

@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="section pay">
-    <form action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/" method="POST">
+    <form action="https://checkout.wompi.co/p/" method="GET">
         <div class="center mb-5">
             <a href="{{ route('cart') }}" class="button is-primary is-rounded is-medium">Volver al carrito</a>
         </div>
@@ -39,28 +39,30 @@
             </tbody>
         </table>
         {{-- Shipment message --}}
-            <article class="message is-link my-5">
-                <div class="message-body has-text-centered">
-                    Si haces tu pedido antes del mediodía, es probable que tu pedido llegue el mismo día, de lo contrario llegará al día siguiente.
-                </div>
-            </article>
+        <article class="message is-link my-5">
+            <div class="message-body has-text-centered">
+                Si haces tu pedido antes del mediodía, es probable que tu pedido llegue el mismo día, de lo contrario llegará al día siguiente.
+            </div>
+        </article>
+
         <div class="my-5">
-            <h3 class="mb-4">Información envío</h3> 
+            <h3 class="mb-4">Información envío</h3>
             {{-- Inputs for shipping --}}
-            @livewire('form-inputs', ['user' => $user, 'reference_code' => $payU["reference_code"]])                                             
-            {{-- PayU inputs for request --}}
-            <input name="merchantId"      type="hidden"  value="{{ $payU["merchant_id"] }}">
-            <input name="accountId"       type="hidden"  value="{{ $payU["account_id"] }}">
-            <input name="description"     type="hidden"  value="Compra de artículo(s) en Peludos">
-            <input name="referenceCode"   type="hidden"  value="{{ $payU["reference_code"] }}">
-            <input name="amount"          type="hidden"  value="{{ $total_price }}">
-            <input name="currency"        type="hidden"  value="COP">
-            <input name="signature"       type="hidden"  value="{{ $payU["signature"] }}">
-            <input name="test"            type="hidden"  value="1"> {{-- 0: PROD / 1: SANDBOX --}}
-            <input name="shippingCity"    type="hidden"  value="Medellín">
-            <input name="shippingCountry" type="hidden"  value="CO">
-            <input name="responseUrl"     type="hidden"  value="{{ $payU["response_url"] }}">
-            <input name="confirmationUrl" type="hidden"  value="{{ $payU["confirmation_url"] }}">
+            @livewire('form-inputs', ['user' => $user, 'reference_code' => $wompi["reference_code"]])
+
+            {{-- Wompi inputs for request --}}
+            <!-- Mandatory -->
+            <input type="hidden" name="public-key" value="{{ $wompi["public_key"] }}" />
+            <input type="hidden" name="currency" value="COP" />
+            <input type="hidden" name="amount-in-cents" value="{{ $wompi["amount_in_cents"] }}" />
+            <input type="hidden" name="reference" value="{{ $wompi["reference_code"] }}" />
+            <input type="hidden" name="signature:integrity" value="{{ $wompi["integrity_signature"] }}" />
+            <!-- Optional -->
+            <input type="hidden" name="redirect-url" value="{{ $wompi["redirect_url"] }}" />
+            <input type="hidden" name="shipping-address:country" value="CO" />
+            <input type="hidden" name="shipping-address:city" value="Medellín" />
+            <input type="hidden" name="shipping-address:region" value="Antioquia" />
+
             {{-- User message --}}
             <article class="message is-link mt-5">
                 <div class="message-body has-text-centered">
@@ -68,6 +70,7 @@
                 </div>
             </article>
         </div>
+
         @livewire('form-submit')
     </form>
 </section>
