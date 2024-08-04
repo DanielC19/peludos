@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Models\Order;
+use App\Models\Setting;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class FormInputs extends Component
@@ -25,6 +27,15 @@ class FormInputs extends Component
         'validateForm' => 'validateAll',
         'pay' => 'pay',
     ];
+
+    private function determineRise() {
+        if (Auth::user()) {
+            if (Auth::user()->referred !== null) {
+                return Setting::find(1)->rise;
+            }
+        }
+        return Setting::find(1)->rise_not_logged;
+    }
 
     public function mount()
     {
@@ -79,5 +90,12 @@ class FormInputs extends Component
         $order = Order::find($this->reference_code);
         $order->name = $this->name;
         $order->save();
+
+        // Fix price rise into database
+        $rise = $this->determineRise();
+        foreach ($order->products as $product) {
+            $product->price = round($product->presentation->price + ($product->presentation->price * ($rise / 100)), -2, PHP_ROUND_HALF_UP);
+            $product->save();
+        }
     }
 }

@@ -81,7 +81,7 @@
                                             <td>{{ $product->presentation->product->name }}</td>
 											<td>{{ $product->presentation->amount}}</td>
 											<td>${{ number_format($product->price, 0, '.', ',') }}</td>
-											<td>{{ $product->amount}}</td>
+											<td>{{ $product->quantity }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

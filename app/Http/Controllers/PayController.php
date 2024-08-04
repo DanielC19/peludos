@@ -70,45 +70,6 @@ class PayController extends Controller
     }
 
     /**
-     * * Function that recieves response from PayU to generate payment
-     * Confirmation URL
-     */
-    public function pay(Request $request)
-    {
-        // Find the order by its reference_code
-        $order = Order::find($request->reference_sale);
-        if ($order === null) {
-            Order::create(['id' => $request->reference_sale]);
-            $order = Order::find($request->reference_sale);
-        }
-        // Save each field of the response ir the order
-        $order->state = $request->state_pol;
-        $order->transaction_id = $request->transaction_id;
-        $order->value = $request->value;
-        $order->tax = $request->tax;
-        $order->transaction_date = $request->transaction_date;
-        $order->email = $request->email_buyer;
-        $order->cellphone = $request->phone;
-        $order->address = $request->shipping_address;
-        // If a registered user payed, save shipping info and its reference in the order
-        $user = User::where('email', $request->email_buyer)->first();
-        if ($user !== null) {
-            $order->user_id = $user->id;
-            $user->cellphone = $request->phone;
-            $user->address = $request->shipping_address;
-            if ($user->referred) {
-                $referred_user = User::find($user->referred);
-                $referred_user->balance += ($order->value * (Setting::find(1)->balance / 100));
-            }
-            $user->save();
-        }
-        // Save order with all data
-        $order->save();
-
-        return true;
-    }
-
-    /**
      * * Wompi redirects here to show final payment confirmation
      * Response URL
      */
@@ -130,22 +91,12 @@ class PayController extends Controller
         $total_price = 0;
         $total_amount = 0;
         $products = [];
-        
-        function determineRise() {
-            if (Auth::user()) {
-                if (Auth::user()->referred !== null) {
-                    return Setting::find(1)->rise;
-                }
-            }
-            return Setting::find(1)->rise_not_logged;
-        }
-        $rise = determineRise();
 
         foreach ($ordered_products as $ordered_product) {
             $product = $ordered_product->presentation->product;
             $product->presentation = $ordered_product->presentation;
             $product->amount = $ordered_product->quantity;
-            $product->price = round($product->presentation->price + ($product->presentation->price * ($rise / 100)), -2, PHP_ROUND_HALF_UP) * $product->amount;
+            $product->price = $ordered_product->price * $ordered_product->quantity;
             $total_price += $product->price;
             $total_amount += $product->amount;
             array_push($products, $product);
