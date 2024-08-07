@@ -138,4 +138,49 @@ class PayController extends Controller
 
         return view('user.confirm', compact('products', 'total_price', 'total_amount' ,'order', 'shipping'));
     }
+
+    /**
+     * * Wompi webhook to notify payment updates
+     */
+    public function pay(Request $request)
+    {
+        $wompi_private_key = env('WOMPI_PRIVATE_KEY');
+
+        $wompi_id = $request->data['transaction']['id'];
+        $wompi_response = Http::withToken($wompi_private_key)->get("https://sandbox.wompi.co/v1/transactions/$wompi_id");
+        $wompi_response = $wompi_response->object();
+
+        $date = explode('T', $wompi_response->data->finalized_at)[0];
+        $time = explode('T', $wompi_response->data->finalized_at)[1];
+        $time = explode('.', $time)[0];
+
+        $order = Order::find($wompi_response->data->reference);
+
+        // Update Order with Wompi data
+        $order->value = $wompi_response->data->amount_in_cents / 100;
+        $order->state = $wompi_response->data->status;
+        $order->transaction_id = $wompi_response->data->id;
+        $order->transaction_date = "$date $time";
+        $order->email = $wompi_response->data->customer_email;
+        $order->cellphone = $wompi_response->data->shipping_address->phone_number;
+        $order->address = $wompi_response->data->shipping_address->address_line_1;
+
+        // If a registered user payed, save shipping info and its reference in the order
+        $user = User::where('email', $wompi_response->data->customer_email)->first();
+        if ($user !== null) {
+            $order->user_id = $user->id;
+            $user->cellphone = $wompi_response->data->shipping_address->phone_number;
+            $user->address = $wompi_response->data->shipping_address->address_line_1;
+            $user->save();
+            if ($user->referred) {
+                $referred_user = User::find($user->referred);
+                $referred_user->balance += ($order->value * (Setting::find(1)->balance / 100));
+                $referred_user->save();
+            }
+        }
+        // Save order with all data
+        $order->save();
+
+        return response()->json([]);
+    }
 }
