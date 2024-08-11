@@ -79,8 +79,9 @@ class PayController extends Controller
         view()->share('cart_full_view', true);
 
         $wompi_private_key = env('WOMPI_PRIVATE_KEY');
+        $wompi_url = env('WOMPI_URL');
 
-        $wompi_response = Http::withToken($wompi_private_key)->get("https://sandbox.wompi.co/v1/transactions/$request->id");
+        $wompi_response = Http::withToken($wompi_private_key)->get("$wompi_url$request->id");
         $wompi_response = $wompi_response->object();
 
         // Get order and all its products
@@ -145,9 +146,10 @@ class PayController extends Controller
     public function pay(Request $request)
     {
         $wompi_private_key = env('WOMPI_PRIVATE_KEY');
+        $wompi_url = env('WOMPI_URL');
 
         $wompi_id = $request->data['transaction']['id'];
-        $wompi_response = Http::withToken($wompi_private_key)->get("https://sandbox.wompi.co/v1/transactions/$wompi_id");
+        $wompi_response = Http::withToken($wompi_private_key)->get("$wompi_url$wompi_id");
         $wompi_response = $wompi_response->object();
 
         $date = explode('T', $wompi_response->data->finalized_at)[0];
