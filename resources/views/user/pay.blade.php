@@ -60,7 +60,7 @@
             <!-- Optional -->
             <input type="hidden" name="redirect-url" value="{{ $wompi["redirect_url"] }}" />
             <input type="hidden" name="shipping-address:country" value="CO" />
-            <input type="hidden" name="shipping-address:city" value="Medellín" />
+            <input type="hidden" name="shipping-address:city" id="wcity" value="Medellín" />
             <input type="hidden" name="shipping-address:region" value="Antioquia" />
 
             {{-- User message --}}

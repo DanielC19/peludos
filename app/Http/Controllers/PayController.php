@@ -116,6 +116,7 @@ class PayController extends Controller
             $order->email = $wompi_response->data->customer_email;
             $order->cellphone = $wompi_response->data->shipping_address->phone_number;
             $order->address = $wompi_response->data->shipping_address->address_line_1;
+            $order->city = $wompi_response->data->shipping_address->city;
 
             // If a registered user payed, save shipping info and its reference in the order
             $user = User::where('email', $wompi_response->data->customer_email)->first();
@@ -123,6 +124,7 @@ class PayController extends Controller
                 $order->user_id = $user->id;
                 $user->cellphone = $wompi_response->data->shipping_address->phone_number;
                 $user->address = $wompi_response->data->shipping_address->address_line_1;
+                $user->document = $wompi_response->data->billing_data->legal_id;
                 $user->save();
                 if ($user->referred) {
                     $referred_user = User::find($user->referred);
@@ -166,6 +168,7 @@ class PayController extends Controller
         $order->email = $wompi_response->data->customer_email;
         $order->cellphone = $wompi_response->data->shipping_address->phone_number;
         $order->address = $wompi_response->data->shipping_address->address_line_1;
+        $order->city = $wompi_response->data->shipping_address->city;
 
         // If a registered user payed, save shipping info and its reference in the order
         $user = User::where('email', $wompi_response->data->customer_email)->first();
@@ -173,6 +176,7 @@ class PayController extends Controller
             $order->user_id = $user->id;
             $user->cellphone = $wompi_response->data->shipping_address->phone_number;
             $user->address = $wompi_response->data->shipping_address->address_line_1;
+            $user->document = $wompi_response->data->customer_data->document;
             $user->save();
             if ($user->referred) {
                 $referred_user = User::find($user->referred);

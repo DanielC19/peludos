@@ -10,6 +10,7 @@ use Livewire\Component;
 class FormInputs extends Component
 {
     public $reference_code;
+    public $document;
     public $user;
     public $name;
     public $email;
@@ -17,6 +18,8 @@ class FormInputs extends Component
     public $address;
 
     protected $rules = [
+        'document' => 'required|string|max:255',
+        'city' => 'required|string|max:255',
         'name' => 'required|string|max:255',
         'email' => 'required|email|max:255',
         'cellphone' => 'required|numeric|digits:10',
@@ -40,10 +43,13 @@ class FormInputs extends Component
     public function mount()
     {
         if ($this->user != null) {
+            $this->document = $this->user->document;
             $this->name = $this->user->name;
             $this->email = $this->user->email;
             $this->cellphone = $this->user->cellphone;
             $this->address = $this->user->address;
+            $this->document = $this->user->document;
+            $this->city = $this->user->city;
         }
     }
 
