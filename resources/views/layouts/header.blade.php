@@ -61,6 +61,14 @@
             @auth
             <div class="navbar-item">
                 <div class="buttons">
+                    <a href="{{ route('account') }}">
+                        <span>{{ Auth::user()->name }}</span>
+                        <i class="fa-solid fa-user fa-large ml-2"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-item">
+                <div class="buttons">
                     <a href="{{ route('account') }}">mi cuenta</a>
                 </div>
             </div>
