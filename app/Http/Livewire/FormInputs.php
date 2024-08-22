@@ -18,8 +18,6 @@ class FormInputs extends Component
     public $address;
 
     protected $rules = [
-        'document' => 'required|string|max:255',
-        'city' => 'required|string|max:255',
         'name' => 'required|string|max:255',
         'email' => 'required|email|max:255',
         'cellphone' => 'required|numeric|digits:10',
